@@ -1,0 +1,993 @@
+{
+  "run_id": "2026-10-07T20-18-29",
+  "model": "wazn-2b-v0.1",
+  "k": 36,
+  "instruction": "Which team owns the component that must be fixed or acted on to resolve this incident?",
+  "incidents": [
+    {
+      "id": "inc-024",
+      "scenario": "payment_timeout",
+      "log_excerpt": "ERROR com.demo.payment.PaymentService: Payment failed for order 19\nException: org.springframework.web.client.RestClientException: Error while extracting response for type [java.lang.String] and content type [application/octet-stream]\nCaused by: java.net.SocketTimeoutException: Read timed out\n  at com.demo.payment.PaymentGatewayClient.charge\n  at com.demo.payment.PaymentService.pay\n  at com.demo.order.OrderController.pay\n  at com.demo.common.RequestIdFilter.doFilterInternal",
+      "expected": "psp-integration",
+      "candidates": [
+        {
+          "id": "psp-integration",
+          "description": "Owns the integration with external payment service providers and payment gateways (card authorization, charges, refunds).",
+          "probability": 0.915609
+        },
+        {
+          "id": "payments-core",
+          "description": "Owns the internal payment domain, payment state and payment reconciliation.",
+          "probability": 0.022689
+        },
+        {
+          "id": "checkout-orders",
+          "description": "Owns order creation, order validation and the order lifecycle (create, confirm, cancel) in the shop backend.",
+          "probability": 0.010519
+        },
+        {
+          "id": "observability",
+          "description": "Owns logging, metrics, tracing and alerting infrastructure.",
+          "probability": 0.005816
+        },
+        {
+          "id": "fraud-risk",
+          "description": "Owns fraud scoring rules and risk decisions on orders.",
+          "probability": 0.004425
+        },
+        {
+          "id": "ci-release",
+          "description": "Owns build pipelines, dependency upgrades, releases and database migrations deployment.",
+          "probability": 0.003572
+        },
+        {
+          "id": "network-edge",
+          "description": "Owns load balancers, DNS, CDN and the edge proxies.",
+          "probability": 0.002965
+        },
+        {
+          "id": "billing-invoicing",
+          "description": "Owns invoices, credit notes and supplier invoice processing.",
+          "probability": 0.002947
+        },
+        {
+          "id": "customer-support",
+          "description": "Owns the support ticketing tool and customer service workflows.",
+          "probability": 0.002854
+        },
+        {
+          "id": "pricing-promotions",
+          "description": "Owns prices, discounts, promo codes and promotion campaigns.",
+          "probability": 0.002487
+        },
+        {
+          "id": "partner-api",
+          "description": "Owns the public API offered to partners and its developer portal.",
+          "probability": 0.002485
+        },
+        {
+          "id": "shipping-delivery",
+          "description": "Owns shipping quotes, carrier integrations and their configuration (carrier API keys, endpoints).",
+          "probability": 0.002262
+        },
+        {
+          "id": "iam-identity",
+          "description": "Owns login, authentication, tokens and user permissions.",
+          "probability": 0.001945
+        },
+        {
+          "id": "security-operations",
+          "description": "Owns security monitoring, incident response and vulnerability management.",
+          "probability": 0.001877
+        },
+        {
+          "id": "kubernetes-platform",
+          "description": "Owns the Kubernetes clusters, pods scheduling, probes and node capacity.",
+          "probability": 0.001716
+        },
+        {
+          "id": "finance-accounting",
+          "description": "Owns accounting exports, ledgers and financial closing.",
+          "probability": 0.001597
+        },
+        {
+          "id": "cart",
+          "description": "Owns the shopping cart service, cart contents and cart pricing previews.",
+          "probability": 0.001553
+        },
+        {
+          "id": "pki-certificates",
+          "description": "Owns TLS certificates, certificate renewal and trust stores for internal and partner connections.",
+          "probability": 0.001353
+        },
+        {
+          "id": "messaging-platform",
+          "description": "Owns Kafka, RabbitMQ and the shared message brokers.",
+          "probability": 0.001148
+        },
+        {
+          "id": "cache-platform",
+          "description": "Owns the shared Redis and caching clusters.",
+          "probability": 0.000891
+        },
+        {
+          "id": "mobile-app",
+          "description": "Owns the iOS and Android shopping apps.",
+          "probability": 0.000861
+        },
+        {
+          "id": "catalog-ingestion",
+          "description": "Owns the import of product catalogs and price feeds sent by suppliers and partners.",
+          "probability": 0.000774
+        },
+        {
+          "id": "customer-accounts",
+          "description": "Owns customer registration, profiles and customer data rules.",
+          "probability": 0.000712
+        },
+        {
+          "id": "database-platform",
+          "description": "Owns the shared database servers, their capacity, connection limits and backups.",
+          "probability": 0.000664
+        },
+        {
+          "id": "loyalty",
+          "description": "Owns loyalty points, tiers and member rewards.",
+          "probability": 0.000654
+        },
+        {
+          "id": "notifications",
+          "description": "Owns customer emails, SMS, push notifications and their sending queues.",
+          "probability": 0.000654
+        },
+        {
+          "id": "reporting-analytics",
+          "description": "Owns business reports, sales dashboards and data exports.",
+          "probability": 0.000654
+        },
+        {
+          "id": "storage-platform",
+          "description": "Owns object storage (S3), file shares and disk volumes.",
+          "probability": 0.00063
+        },
+        {
+          "id": "crm",
+          "description": "Owns the customer relationship management application and customer contact channels.",
+          "probability": 0.000626
+        },
+        {
+          "id": "returns-refunds",
+          "description": "Owns customer returns and refund workflows.",
+          "probability": 0.000543
+        },
+        {
+          "id": "catalog-search",
+          "description": "Owns product search, search ranking and the product listing pages.",
+          "probability": 0.000515
+        },
+        {
+          "id": "web-frontend",
+          "description": "Owns the customer website front end and its rendering.",
+          "probability": 0.000456
+        },
+        {
+          "id": "marketing-campaigns",
+          "description": "Owns marketing emails, newsletters and campaign targeting.",
+          "probability": 0.000455
+        },
+        {
+          "id": "warehouse-stock",
+          "description": "Owns stock levels, stock reservations and warehouse synchronisation.",
+          "probability": 0.000445
+        },
+        {
+          "id": "hr-systems",
+          "description": "Owns employee data imports and HR integrations.",
+          "probability": 0.000374
+        },
+        {
+          "id": "data-platform",
+          "description": "Owns the data warehouse, ETL pipelines and analytics storage.",
+          "probability": 0.000273
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune équipe ne correspond",
+          "probability": 0.007545
+        }
+      ],
+      "predicted": "psp-integration",
+      "confidence": 0.915609,
+      "latency_ms": 1135.5,
+      "input_tokens": 660
+    },
+    {
+      "id": "inc-004",
+      "scenario": "tls_cert_expired",
+      "log_excerpt": "ERROR com.demo.order.OrderController: Fraud check unavailable for order 2, order kept on hold\nException: org.springframework.web.client.ResourceAccessException: I/O error on POST request for \"https://risk.partner-fraudshield.example/v2/score\": PKIX path validation failed: java.security.cert.CertPathValidatorException: validity check failed\nCaused by: javax.net.ssl.SSLHandshakeException: PKIX path validation failed: java.security.cert.CertPathValidatorException: validity check failed\nCaused by: java.security.cert.CertificateExpiredException: NotAfter: Sat Oct 03 23:59:59 CEST 2026\n  at com.demo.fraud.FraudCheckClient.isSuspicious\n  at com.demo.order.OrderController.fraudCheck\n  at com.demo.common.RequestIdFilter.doFilterInternal",
+      "expected": "pki-certificates",
+      "candidates": [
+        {
+          "id": "pki-certificates",
+          "description": "Owns TLS certificates, certificate renewal and trust stores for internal and partner connections.",
+          "probability": 0.363741
+        },
+        {
+          "id": "fraud-risk",
+          "description": "Owns fraud scoring rules and risk decisions on orders.",
+          "probability": 0.35617
+        },
+        {
+          "id": "checkout-orders",
+          "description": "Owns order creation, order validation and the order lifecycle (create, confirm, cancel) in the shop backend.",
+          "probability": 0.084448
+        },
+        {
+          "id": "security-operations",
+          "description": "Owns security monitoring, incident response and vulnerability management.",
+          "probability": 0.074494
+        },
+        {
+          "id": "partner-api",
+          "description": "Owns the public API offered to partners and its developer portal.",
+          "probability": 0.030814
+        },
+        {
+          "id": "customer-support",
+          "description": "Owns the support ticketing tool and customer service workflows.",
+          "probability": 0.009695
+        },
+        {
+          "id": "observability",
+          "description": "Owns logging, metrics, tracing and alerting infrastructure.",
+          "probability": 0.009449
+        },
+        {
+          "id": "payments-core",
+          "description": "Owns the internal payment domain, payment state and payment reconciliation.",
+          "probability": 0.008354
+        },
+        {
+          "id": "ci-release",
+          "description": "Owns build pipelines, dependency upgrades, releases and database migrations deployment.",
+          "probability": 0.007795
+        },
+        {
+          "id": "network-edge",
+          "description": "Owns load balancers, DNS, CDN and the edge proxies.",
+          "probability": 0.005874
+        },
+        {
+          "id": "kubernetes-platform",
+          "description": "Owns the Kubernetes clusters, pods scheduling, probes and node capacity.",
+          "probability": 0.005608
+        },
+        {
+          "id": "psp-integration",
+          "description": "Owns the integration with external payment service providers and payment gateways (card authorization, charges, refunds).",
+          "probability": 0.003738
+        },
+        {
+          "id": "customer-accounts",
+          "description": "Owns customer registration, profiles and customer data rules.",
+          "probability": 0.003154
+        },
+        {
+          "id": "crm",
+          "description": "Owns the customer relationship management application and customer contact channels.",
+          "probability": 0.003072
+        },
+        {
+          "id": "iam-identity",
+          "description": "Owns login, authentication, tokens and user permissions.",
+          "probability": 0.002986
+        },
+        {
+          "id": "cache-platform",
+          "description": "Owns the shared Redis and caching clusters.",
+          "probability": 0.00194
+        },
+        {
+          "id": "billing-invoicing",
+          "description": "Owns invoices, credit notes and supplier invoice processing.",
+          "probability": 0.001932
+        },
+        {
+          "id": "cart",
+          "description": "Owns the shopping cart service, cart contents and cart pricing previews.",
+          "probability": 0.001862
+        },
+        {
+          "id": "catalog-search",
+          "description": "Owns product search, search ranking and the product listing pages.",
+          "probability": 0.0018
+        },
+        {
+          "id": "shipping-delivery",
+          "description": "Owns shipping quotes, carrier integrations and their configuration (carrier API keys, endpoints).",
+          "probability": 0.001779
+        },
+        {
+          "id": "mobile-app",
+          "description": "Owns the iOS and Android shopping apps.",
+          "probability": 0.001656
+        },
+        {
+          "id": "catalog-ingestion",
+          "description": "Owns the import of product catalogs and price feeds sent by suppliers and partners.",
+          "probability": 0.001655
+        },
+        {
+          "id": "reporting-analytics",
+          "description": "Owns business reports, sales dashboards and data exports.",
+          "probability": 0.00161
+        },
+        {
+          "id": "database-platform",
+          "description": "Owns the shared database servers, their capacity, connection limits and backups.",
+          "probability": 0.001577
+        },
+        {
+          "id": "marketing-campaigns",
+          "description": "Owns marketing emails, newsletters and campaign targeting.",
+          "probability": 0.001464
+        },
+        {
+          "id": "storage-platform",
+          "description": "Owns object storage (S3), file shares and disk volumes.",
+          "probability": 0.001404
+        },
+        {
+          "id": "loyalty",
+          "description": "Owns loyalty points, tiers and member rewards.",
+          "probability": 0.001379
+        },
+        {
+          "id": "web-frontend",
+          "description": "Owns the customer website front end and its rendering.",
+          "probability": 0.001274
+        },
+        {
+          "id": "data-platform",
+          "description": "Owns the data warehouse, ETL pipelines and analytics storage.",
+          "probability": 0.001257
+        },
+        {
+          "id": "pricing-promotions",
+          "description": "Owns prices, discounts, promo codes and promotion campaigns.",
+          "probability": 0.00123
+        },
+        {
+          "id": "finance-accounting",
+          "description": "Owns accounting exports, ledgers and financial closing.",
+          "probability": 0.001201
+        },
+        {
+          "id": "warehouse-stock",
+          "description": "Owns stock levels, stock reservations and warehouse synchronisation.",
+          "probability": 0.001191
+        },
+        {
+          "id": "notifications",
+          "description": "Owns customer emails, SMS, push notifications and their sending queues.",
+          "probability": 0.001159
+        },
+        {
+          "id": "returns-refunds",
+          "description": "Owns customer returns and refund workflows.",
+          "probability": 0.001093
+        },
+        {
+          "id": "messaging-platform",
+          "description": "Owns Kafka, RabbitMQ and the shared message brokers.",
+          "probability": 0.001081
+        },
+        {
+          "id": "hr-systems",
+          "description": "Owns employee data imports and HR integrations.",
+          "probability": 0.001066
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune équipe ne correspond",
+          "probability": 0.026404
+        }
+      ],
+      "predicted": "pki-certificates",
+      "confidence": 0.363741,
+      "latency_ms": 244.5,
+      "input_tokens": 735
+    },
+    {
+      "id": "inc-018",
+      "scenario": "json_parse_error",
+      "log_excerpt": "ERROR com.demo.catalog.CatalogController: Catalog import failed for supplier acme\nException: tools.jackson.core.exc.UnexpectedEndOfInputException: Unexpected end-of-input within/between Object entries\n  at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); byte offset: #UNKNOWN]\n  at com.demo.catalog.CatalogController.importFeed\n  at com.demo.common.RequestIdFilter.doFilterInternal",
+      "expected": "catalog-ingestion",
+      "candidates": [
+        {
+          "id": "catalog-ingestion",
+          "description": "Owns the import of product catalogs and price feeds sent by suppliers and partners.",
+          "probability": 0.943714
+        },
+        {
+          "id": "ci-release",
+          "description": "Owns build pipelines, dependency upgrades, releases and database migrations deployment.",
+          "probability": 0.007841
+        },
+        {
+          "id": "observability",
+          "description": "Owns logging, metrics, tracing and alerting infrastructure.",
+          "probability": 0.00574
+        },
+        {
+          "id": "data-platform",
+          "description": "Owns the data warehouse, ETL pipelines and analytics storage.",
+          "probability": 0.003857
+        },
+        {
+          "id": "customer-support",
+          "description": "Owns the support ticketing tool and customer service workflows.",
+          "probability": 0.003759
+        },
+        {
+          "id": "checkout-orders",
+          "description": "Owns order creation, order validation and the order lifecycle (create, confirm, cancel) in the shop backend.",
+          "probability": 0.002949
+        },
+        {
+          "id": "catalog-search",
+          "description": "Owns product search, search ranking and the product listing pages.",
+          "probability": 0.002846
+        },
+        {
+          "id": "partner-api",
+          "description": "Owns the public API offered to partners and its developer portal.",
+          "probability": 0.002259
+        },
+        {
+          "id": "storage-platform",
+          "description": "Owns object storage (S3), file shares and disk volumes.",
+          "probability": 0.001621
+        },
+        {
+          "id": "reporting-analytics",
+          "description": "Owns business reports, sales dashboards and data exports.",
+          "probability": 0.00162
+        },
+        {
+          "id": "hr-systems",
+          "description": "Owns employee data imports and HR integrations.",
+          "probability": 0.001475
+        },
+        {
+          "id": "customer-accounts",
+          "description": "Owns customer registration, profiles and customer data rules.",
+          "probability": 0.001452
+        },
+        {
+          "id": "billing-invoicing",
+          "description": "Owns invoices, credit notes and supplier invoice processing.",
+          "probability": 0.001452
+        },
+        {
+          "id": "iam-identity",
+          "description": "Owns login, authentication, tokens and user permissions.",
+          "probability": 0.001391
+        },
+        {
+          "id": "warehouse-stock",
+          "description": "Owns stock levels, stock reservations and warehouse synchronisation.",
+          "probability": 0.001295
+        },
+        {
+          "id": "messaging-platform",
+          "description": "Owns Kafka, RabbitMQ and the shared message brokers.",
+          "probability": 0.001291
+        },
+        {
+          "id": "network-edge",
+          "description": "Owns load balancers, DNS, CDN and the edge proxies.",
+          "probability": 0.001254
+        },
+        {
+          "id": "security-operations",
+          "description": "Owns security monitoring, incident response and vulnerability management.",
+          "probability": 0.001233
+        },
+        {
+          "id": "kubernetes-platform",
+          "description": "Owns the Kubernetes clusters, pods scheduling, probes and node capacity.",
+          "probability": 0.001122
+        },
+        {
+          "id": "database-platform",
+          "description": "Owns the shared database servers, their capacity, connection limits and backups.",
+          "probability": 0.001101
+        },
+        {
+          "id": "payments-core",
+          "description": "Owns the internal payment domain, payment state and payment reconciliation.",
+          "probability": 0.001064
+        },
+        {
+          "id": "fraud-risk",
+          "description": "Owns fraud scoring rules and risk decisions on orders.",
+          "probability": 0.001046
+        },
+        {
+          "id": "cache-platform",
+          "description": "Owns the shared Redis and caching clusters.",
+          "probability": 0.001022
+        },
+        {
+          "id": "cart",
+          "description": "Owns the shopping cart service, cart contents and cart pricing previews.",
+          "probability": 0.000872
+        },
+        {
+          "id": "shipping-delivery",
+          "description": "Owns shipping quotes, carrier integrations and their configuration (carrier API keys, endpoints).",
+          "probability": 0.000839
+        },
+        {
+          "id": "pricing-promotions",
+          "description": "Owns prices, discounts, promo codes and promotion campaigns.",
+          "probability": 0.000819
+        },
+        {
+          "id": "web-frontend",
+          "description": "Owns the customer website front end and its rendering.",
+          "probability": 0.000743
+        },
+        {
+          "id": "psp-integration",
+          "description": "Owns the integration with external payment service providers and payment gateways (card authorization, charges, refunds).",
+          "probability": 0.000696
+        },
+        {
+          "id": "finance-accounting",
+          "description": "Owns accounting exports, ledgers and financial closing.",
+          "probability": 0.000612
+        },
+        {
+          "id": "crm",
+          "description": "Owns the customer relationship management application and customer contact channels.",
+          "probability": 0.000574
+        },
+        {
+          "id": "mobile-app",
+          "description": "Owns the iOS and Android shopping apps.",
+          "probability": 0.000455
+        },
+        {
+          "id": "marketing-campaigns",
+          "description": "Owns marketing emails, newsletters and campaign targeting.",
+          "probability": 0.000445
+        },
+        {
+          "id": "loyalty",
+          "description": "Owns loyalty points, tiers and member rewards.",
+          "probability": 0.000426
+        },
+        {
+          "id": "pki-certificates",
+          "description": "Owns TLS certificates, certificate renewal and trust stores for internal and partner connections.",
+          "probability": 0.000402
+        },
+        {
+          "id": "returns-refunds",
+          "description": "Owns customer returns and refund workflows.",
+          "probability": 0.000384
+        },
+        {
+          "id": "notifications",
+          "description": "Owns customer emails, SMS, push notifications and their sending queues.",
+          "probability": 0.000331
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune équipe ne correspond",
+          "probability": 0.007135
+        }
+      ],
+      "predicted": "catalog-ingestion",
+      "confidence": 0.943714,
+      "latency_ms": 237.8,
+      "input_tokens": 649
+    },
+    {
+      "id": "inc-001",
+      "scenario": "npe_guest_order",
+      "log_excerpt": "ERROR o.a.c.c.C.[.[.[/].[dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.NullPointerException: Cannot invoke \"com.demo.customer.Customer.getAddress()\" because \"customer\" is null] with root cause\nException: java.lang.NullPointerException: Cannot invoke \"com.demo.customer.Customer.getAddress()\" because \"customer\" is null\n  at com.demo.order.OrderService.validate\n  at com.demo.order.OrderService.create\n  at com.demo.order.OrderController.create\n  at com.demo.common.RequestIdFilter.doFilterInternal",
+      "expected": "checkout-orders",
+      "candidates": [
+        {
+          "id": "checkout-orders",
+          "description": "Owns order creation, order validation and the order lifecycle (create, confirm, cancel) in the shop backend.",
+          "probability": 0.79763
+        },
+        {
+          "id": "customer-accounts",
+          "description": "Owns customer registration, profiles and customer data rules.",
+          "probability": 0.080212
+        },
+        {
+          "id": "crm",
+          "description": "Owns the customer relationship management application and customer contact channels.",
+          "probability": 0.038693
+        },
+        {
+          "id": "ci-release",
+          "description": "Owns build pipelines, dependency upgrades, releases and database migrations deployment.",
+          "probability": 0.007505
+        },
+        {
+          "id": "customer-support",
+          "description": "Owns the support ticketing tool and customer service workflows.",
+          "probability": 0.006454
+        },
+        {
+          "id": "observability",
+          "description": "Owns logging, metrics, tracing and alerting infrastructure.",
+          "probability": 0.005597
+        },
+        {
+          "id": "kubernetes-platform",
+          "description": "Owns the Kubernetes clusters, pods scheduling, probes and node capacity.",
+          "probability": 0.00539
+        },
+        {
+          "id": "iam-identity",
+          "description": "Owns login, authentication, tokens and user permissions.",
+          "probability": 0.005209
+        },
+        {
+          "id": "fraud-risk",
+          "description": "Owns fraud scoring rules and risk decisions on orders.",
+          "probability": 0.004624
+        },
+        {
+          "id": "returns-refunds",
+          "description": "Owns customer returns and refund workflows.",
+          "probability": 0.004168
+        },
+        {
+          "id": "web-frontend",
+          "description": "Owns the customer website front end and its rendering.",
+          "probability": 0.003543
+        },
+        {
+          "id": "partner-api",
+          "description": "Owns the public API offered to partners and its developer portal.",
+          "probability": 0.002936
+        },
+        {
+          "id": "mobile-app",
+          "description": "Owns the iOS and Android shopping apps.",
+          "probability": 0.002665
+        },
+        {
+          "id": "security-operations",
+          "description": "Owns security monitoring, incident response and vulnerability management.",
+          "probability": 0.002583
+        },
+        {
+          "id": "network-edge",
+          "description": "Owns load balancers, DNS, CDN and the edge proxies.",
+          "probability": 0.002496
+        },
+        {
+          "id": "payments-core",
+          "description": "Owns the internal payment domain, payment state and payment reconciliation.",
+          "probability": 0.002442
+        },
+        {
+          "id": "cart",
+          "description": "Owns the shopping cart service, cart contents and cart pricing previews.",
+          "probability": 0.002313
+        },
+        {
+          "id": "hr-systems",
+          "description": "Owns employee data imports and HR integrations.",
+          "probability": 0.002165
+        },
+        {
+          "id": "notifications",
+          "description": "Owns customer emails, SMS, push notifications and their sending queues.",
+          "probability": 0.002113
+        },
+        {
+          "id": "cache-platform",
+          "description": "Owns the shared Redis and caching clusters.",
+          "probability": 0.001988
+        },
+        {
+          "id": "psp-integration",
+          "description": "Owns the integration with external payment service providers and payment gateways (card authorization, charges, refunds).",
+          "probability": 0.001809
+        },
+        {
+          "id": "shipping-delivery",
+          "description": "Owns shipping quotes, carrier integrations and their configuration (carrier API keys, endpoints).",
+          "probability": 0.001767
+        },
+        {
+          "id": "billing-invoicing",
+          "description": "Owns invoices, credit notes and supplier invoice processing.",
+          "probability": 0.001754
+        },
+        {
+          "id": "database-platform",
+          "description": "Owns the shared database servers, their capacity, connection limits and backups.",
+          "probability": 0.001388
+        },
+        {
+          "id": "loyalty",
+          "description": "Owns loyalty points, tiers and member rewards.",
+          "probability": 0.00129
+        },
+        {
+          "id": "catalog-search",
+          "description": "Owns product search, search ranking and the product listing pages.",
+          "probability": 0.001271
+        },
+        {
+          "id": "pricing-promotions",
+          "description": "Owns prices, discounts, promo codes and promotion campaigns.",
+          "probability": 0.00125
+        },
+        {
+          "id": "reporting-analytics",
+          "description": "Owns business reports, sales dashboards and data exports.",
+          "probability": 0.001185
+        },
+        {
+          "id": "storage-platform",
+          "description": "Owns object storage (S3), file shares and disk volumes.",
+          "probability": 0.001182
+        },
+        {
+          "id": "data-platform",
+          "description": "Owns the data warehouse, ETL pipelines and analytics storage.",
+          "probability": 0.001009
+        },
+        {
+          "id": "warehouse-stock",
+          "description": "Owns stock levels, stock reservations and warehouse synchronisation.",
+          "probability": 0.000998
+        },
+        {
+          "id": "messaging-platform",
+          "description": "Owns Kafka, RabbitMQ and the shared message brokers.",
+          "probability": 0.000995
+        },
+        {
+          "id": "finance-accounting",
+          "description": "Owns accounting exports, ledgers and financial closing.",
+          "probability": 0.00092
+        },
+        {
+          "id": "marketing-campaigns",
+          "description": "Owns marketing emails, newsletters and campaign targeting.",
+          "probability": 0.000918
+        },
+        {
+          "id": "catalog-ingestion",
+          "description": "Owns the import of product catalogs and price feeds sent by suppliers and partners.",
+          "probability": 0.000858
+        },
+        {
+          "id": "pki-certificates",
+          "description": "Owns TLS certificates, certificate renewal and trust stores for internal and partner connections.",
+          "probability": 0.00068
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune équipe ne correspond",
+          "probability": 0.014219
+        }
+      ],
+      "predicted": "checkout-orders",
+      "confidence": 0.79763,
+      "latency_ms": 246.1,
+      "input_tokens": 682
+    },
+    {
+      "id": "inc-010",
+      "scenario": "missing_config",
+      "log_excerpt": "ERROR o.a.c.c.C.[.[.[/].[dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.IllegalStateException: Required key 'shipping.partner.api-key' not found] with root cause\nException: java.lang.IllegalStateException: Required key 'shipping.partner.api-key' not found\n  at com.demo.shipping.ShippingClient.quote\n  at com.demo.order.OrderController.shippingQuote\n  at com.demo.common.RequestIdFilter.doFilterInternal",
+      "expected": "shipping-delivery",
+      "candidates": [
+        {
+          "id": "shipping-delivery",
+          "description": "Owns shipping quotes, carrier integrations and their configuration (carrier API keys, endpoints).",
+          "probability": 0.940857
+        },
+        {
+          "id": "partner-api",
+          "description": "Owns the public API offered to partners and its developer portal.",
+          "probability": 0.016234
+        },
+        {
+          "id": "checkout-orders",
+          "description": "Owns order creation, order validation and the order lifecycle (create, confirm, cancel) in the shop backend.",
+          "probability": 0.013815
+        },
+        {
+          "id": "observability",
+          "description": "Owns logging, metrics, tracing and alerting infrastructure.",
+          "probability": 0.003136
+        },
+        {
+          "id": "security-operations",
+          "description": "Owns security monitoring, incident response and vulnerability management.",
+          "probability": 0.002775
+        },
+        {
+          "id": "customer-support",
+          "description": "Owns the support ticketing tool and customer service workflows.",
+          "probability": 0.001837
+        },
+        {
+          "id": "iam-identity",
+          "description": "Owns login, authentication, tokens and user permissions.",
+          "probability": 0.001832
+        },
+        {
+          "id": "cache-platform",
+          "description": "Owns the shared Redis and caching clusters.",
+          "probability": 0.001616
+        },
+        {
+          "id": "ci-release",
+          "description": "Owns build pipelines, dependency upgrades, releases and database migrations deployment.",
+          "probability": 0.001553
+        },
+        {
+          "id": "kubernetes-platform",
+          "description": "Owns the Kubernetes clusters, pods scheduling, probes and node capacity.",
+          "probability": 0.001469
+        },
+        {
+          "id": "cart",
+          "description": "Owns the shopping cart service, cart contents and cart pricing previews.",
+          "probability": 0.001266
+        },
+        {
+          "id": "payments-core",
+          "description": "Owns the internal payment domain, payment state and payment reconciliation.",
+          "probability": 0.001254
+        },
+        {
+          "id": "psp-integration",
+          "description": "Owns the integration with external payment service providers and payment gateways (card authorization, charges, refunds).",
+          "probability": 0.001194
+        },
+        {
+          "id": "crm",
+          "description": "Owns the customer relationship management application and customer contact channels.",
+          "probability": 0.001134
+        },
+        {
+          "id": "network-edge",
+          "description": "Owns load balancers, DNS, CDN and the edge proxies.",
+          "probability": 0.000996
+        },
+        {
+          "id": "fraud-risk",
+          "description": "Owns fraud scoring rules and risk decisions on orders.",
+          "probability": 0.000958
+        },
+        {
+          "id": "catalog-ingestion",
+          "description": "Owns the import of product catalogs and price feeds sent by suppliers and partners.",
+          "probability": 0.000938
+        },
+        {
+          "id": "web-frontend",
+          "description": "Owns the customer website front end and its rendering.",
+          "probability": 0.000835
+        },
+        {
+          "id": "billing-invoicing",
+          "description": "Owns invoices, credit notes and supplier invoice processing.",
+          "probability": 0.000772
+        },
+        {
+          "id": "pricing-promotions",
+          "description": "Owns prices, discounts, promo codes and promotion campaigns.",
+          "probability": 0.000751
+        },
+        {
+          "id": "mobile-app",
+          "description": "Owns the iOS and Android shopping apps.",
+          "probability": 0.000555
+        },
+        {
+          "id": "customer-accounts",
+          "description": "Owns customer registration, profiles and customer data rules.",
+          "probability": 0.000438
+        },
+        {
+          "id": "pki-certificates",
+          "description": "Owns TLS certificates, certificate renewal and trust stores for internal and partner connections.",
+          "probability": 0.000408
+        },
+        {
+          "id": "warehouse-stock",
+          "description": "Owns stock levels, stock reservations and warehouse synchronisation.",
+          "probability": 0.00032
+        },
+        {
+          "id": "reporting-analytics",
+          "description": "Owns business reports, sales dashboards and data exports.",
+          "probability": 0.000319
+        },
+        {
+          "id": "storage-platform",
+          "description": "Owns object storage (S3), file shares and disk volumes.",
+          "probability": 0.000313
+        },
+        {
+          "id": "catalog-search",
+          "description": "Owns product search, search ranking and the product listing pages.",
+          "probability": 0.000279
+        },
+        {
+          "id": "loyalty",
+          "description": "Owns loyalty points, tiers and member rewards.",
+          "probability": 0.000279
+        },
+        {
+          "id": "notifications",
+          "description": "Owns customer emails, SMS, push notifications and their sending queues.",
+          "probability": 0.000274
+        },
+        {
+          "id": "marketing-campaigns",
+          "description": "Owns marketing emails, newsletters and campaign targeting.",
+          "probability": 0.00027
+        },
+        {
+          "id": "messaging-platform",
+          "description": "Owns Kafka, RabbitMQ and the shared message brokers.",
+          "probability": 0.000269
+        },
+        {
+          "id": "hr-systems",
+          "description": "Owns employee data imports and HR integrations.",
+          "probability": 0.000252
+        },
+        {
+          "id": "data-platform",
+          "description": "Owns the data warehouse, ETL pipelines and analytics storage.",
+          "probability": 0.000236
+        },
+        {
+          "id": "finance-accounting",
+          "description": "Owns accounting exports, ledgers and financial closing.",
+          "probability": 0.000211
+        },
+        {
+          "id": "returns-refunds",
+          "description": "Owns customer returns and refund workflows.",
+          "probability": 0.000185
+        },
+        {
+          "id": "database-platform",
+          "description": "Owns the shared database servers, their capacity, connection limits and backups.",
+          "probability": 0.000171
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune équipe ne correspond",
+          "probability": 0.005449
+        }
+      ],
+      "predicted": "shipping-delivery",
+      "confidence": 0.940857,
+      "latency_ms": 237.6,
+      "input_tokens": 669
+    }
+  ]
+}

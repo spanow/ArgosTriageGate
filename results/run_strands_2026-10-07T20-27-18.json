@@ -1,0 +1,3626 @@
+{
+  "run_id": "2026-10-07T20-27-18",
+  "model": "strands-decider-2B-hobson-v21",
+  "hardware": "Modal, NVIDIA L4, 23034 MiB, CUDA, torch 2.14.1, flash-linear-attention installed",
+  "dataset": "main",
+  "threshold": 0.6,
+  "instruction": "Which team must act to resolve the incident described in this application log?",
+  "incidents": [
+    {
+      "id": "inc-001",
+      "source": "victim-app",
+      "scenario": "npe_guest_order",
+      "ambiguous": false,
+      "log_excerpt": "ERROR o.a.c.c.C.[.[.[/].[dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.NullPointerException: Cannot invoke \"com.demo.customer.Customer.getAddress()\" because \"customer\" is null] with root cause\nException: java.lang.NullPointerException: Cannot invoke \"com.demo.customer.Customer.getAddress()\" because \"customer\" is null\n  at com.demo.order.OrderService.validate\n  at com.demo.order.OrderService.create\n  at com.demo.order.OrderController.create\n  at com.demo.common.RequestIdFilter.doFilterInternal",
+      "expected": "code_defect",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.8053
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.0461
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.0177
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.0847
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0099
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.0363
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.3502
+        }
+      ],
+      "predicted": "code_defect",
+      "confidence": 0.8053,
+      "route": "fix_agent",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 285.9,
+      "input_tokens": 586
+    },
+    {
+      "id": "inc-002",
+      "source": "victim-app",
+      "scenario": "optimistic_lock",
+      "ambiguous": false,
+      "log_excerpt": "ERROR o.a.c.c.C.[.[.[/].[dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.orm.ObjectOptimisticLockingFailureException: Row was already updated or deleted by another transaction for entity [co…\nException: org.hibernate.StaleObjectStateException: Row was already updated or deleted by another transaction for entity [com.demo.order.ShopOrder with id '1']\n  at com.demo.order.OrderService.cancel\n  at com.demo.order.OrderController.cancel\n  at com.demo.common.RequestIdFilter.doFilterInternal",
+      "expected": "code_defect",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.7734
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.0695
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.0312
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.0863
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0123
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.0274
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.3591
+        }
+      ],
+      "predicted": "code_defect",
+      "confidence": 0.7734,
+      "route": "fix_agent",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 236.0,
+      "input_tokens": 589
+    },
+    {
+      "id": "inc-003",
+      "source": "victim-app",
+      "scenario": "promo_index_bug",
+      "ambiguous": false,
+      "log_excerpt": "ERROR o.a.c.c.C.[.[.[/].[dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.ArrayIndexOutOfBoundsException: Index 0 out of bounds for length 0] with root cause\nException: java.lang.ArrayIndexOutOfBoundsException: Index 0 out of bounds for length 0\n  at com.demo.order.DiscountService.apply\n  at com.demo.order.OrderService.create\n  at com.demo.order.OrderController.create\n  at com.demo.common.RequestIdFilter.doFilterInternal",
+      "expected": "code_defect",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.7706
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.0634
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.0312
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.101
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0104
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.0233
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.4602
+        }
+      ],
+      "predicted": "code_defect",
+      "confidence": 0.7706,
+      "route": "fix_agent",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 270.3,
+      "input_tokens": 579
+    },
+    {
+      "id": "inc-004",
+      "source": "victim-app",
+      "scenario": "tls_cert_expired",
+      "ambiguous": false,
+      "log_excerpt": "ERROR com.demo.order.OrderController: Fraud check unavailable for order 2, order kept on hold\nException: org.springframework.web.client.ResourceAccessException: I/O error on POST request for \"https://risk.partner-fraudshield.example/v2/score\": PKIX path validation failed: java.security.cert.CertPathValidatorException: validity check failed\nCaused by: javax.net.ssl.SSLHandshakeException: PKIX path validation failed: java.security.cert.CertPathValidatorException: validity check failed\nCaused by: java.security.cert.CertificateExpiredException: NotAfter: Sat Oct 03 23:59:59 CEST 2026\n  at com.demo.fraud.FraudCheckClient.isSuspicious\n  at com.demo.order.OrderController.fraudCheck\n  at com.demo.common.RequestIdFilter.doFilterInternal",
+      "expected": "security_certificate",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.0734
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.0423
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.009
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.3321
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.5331
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.0101
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.1957
+        }
+      ],
+      "predicted": "security_certificate",
+      "confidence": 0.5331,
+      "route": "escalate",
+      "escalated": true,
+      "reason": "low_confidence",
+      "suggestions": [
+        [
+          "security_certificate",
+          0.5331
+        ],
+        [
+          "dependency",
+          0.3321
+        ]
+      ],
+      "latency_ms": 254.2,
+      "input_tokens": 639
+    },
+    {
+      "id": "inc-005",
+      "source": "victim-app",
+      "scenario": "npe_guest_order",
+      "ambiguous": false,
+      "log_excerpt": "ERROR o.a.c.c.C.[.[.[/].[dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.NullPointerException: Cannot invoke \"com.demo.customer.Customer.getAddress()\" because \"customer\" is null] with root cause\nException: java.lang.NullPointerException: Cannot invoke \"com.demo.customer.Customer.getAddress()\" because \"customer\" is null\n  at com.demo.order.OrderService.validate\n  at com.demo.order.OrderService.create\n  at com.demo.order.OrderController.create\n  at com.demo.common.RequestIdFilter.doFilterInternal",
+      "expected": "code_defect",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.8053
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.0461
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.0177
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.0847
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0099
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.0363
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.3502
+        }
+      ],
+      "predicted": "code_defect",
+      "confidence": 0.8053,
+      "route": "fix_agent",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 247.2,
+      "input_tokens": 586
+    },
+    {
+      "id": "inc-006",
+      "source": "victim-app",
+      "scenario": "payment_unavailable",
+      "ambiguous": false,
+      "log_excerpt": "ERROR com.demo.payment.PaymentService: Payment failed for order 6\nException: org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 : \"{\"error\":\"maintenance\"}\"\n  at com.demo.payment.PaymentGatewayClient.charge\n  at com.demo.payment.PaymentService.pay\n  at com.demo.order.OrderController.pay\n  at com.demo.common.RequestIdFilter.doFilterInternal",
+      "expected": "dependency",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.0449
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.0289
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.0242
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.8822
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0066
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.0132
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.3506
+        }
+      ],
+      "predicted": "dependency",
+      "confidence": 0.8822,
+      "route": "dependency_owner_ticket",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 324.6,
+      "input_tokens": 544
+    },
+    {
+      "id": "inc-007",
+      "source": "victim-app",
+      "scenario": "payment_unavailable",
+      "ambiguous": false,
+      "log_excerpt": "ERROR com.demo.payment.PaymentService: Payment failed for order 7\nException: org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 : \"{\"error\":\"maintenance\"}\"\n  at com.demo.payment.PaymentGatewayClient.charge\n  at com.demo.payment.PaymentService.pay\n  at com.demo.order.OrderController.pay\n  at com.demo.common.RequestIdFilter.doFilterInternal",
+      "expected": "dependency",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.045
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.0279
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.0246
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.8828
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0065
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.0133
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.3471
+        }
+      ],
+      "predicted": "dependency",
+      "confidence": 0.8828,
+      "route": "dependency_owner_ticket",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 236.9,
+      "input_tokens": 544
+    },
+    {
+      "id": "inc-008",
+      "source": "victim-app",
+      "scenario": "duplicate_customer",
+      "ambiguous": true,
+      "log_excerpt": "WARN org.hibernate.orm.jdbc.error: HHH000247: ErrorCode: 23505, SQLState: 23505\nWARN org.hibernate.orm.jdbc.error: Violation d'index unique ou clé primaire: \"PUBLIC.CONSTRAINT_5 INDEX PUBLIC.CONSTRAINT_INDEX_5 ON PUBLIC.CUSTOMER(EMAIL NULLS FIRST) VALUES ( /* 1 */ '<EMAIL>' )\"\n  Unique index or primary key violation: \"PUBLIC.CONSTRAINT_5 INDEX PUBLIC.CONSTRAINT_INDEX_5 ON PUBLIC.CUSTOMER(EMAIL NULLS FIRST) VALUES ( /* 1 */ '<EMAIL>' )\"; SQL statement:\n  insert into customer (address,email,name,id) values (?,?,?,?) [23505-240]\nERROR o.a.c.c.C.[.[.[/].[dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.dao.DataIntegrityViolationException: could not execute statement [Violation d'index unique ou clé primaire: \"PUBLIC.C…\nException: org.h2.jdbc.JdbcSQLIntegrityConstraintViolationException: Violation d'index unique ou clé primaire: \"PUBLIC.CONSTRAINT_5 INDEX PUBLIC.CONSTRAINT_INDEX_5 ON PUBLIC.CUSTOMER(EMAIL NULLS FIRST) VALUES ( /* 1 */ '<EMAIL>' )\"\n  Unique index or primary key violation: \"PUBLIC.CONSTRAINT_5 INDEX PUBLIC.CONSTRAINT_INDEX_5 ON PUBLIC.CUSTOMER(EMAIL NULLS FIRST) VALUES ( /* 1 */ '<EMAIL>' )\"; SQL statement:\n  insert into customer (address,email,name,id) values (?,?,?,?) [23505-240]] [insert into customer (address,email,name,id) values (?,?,?,?)]; SQL [insert into customer (address,email,name,id) values (?,?,?,?)]; constraint [PUBLIC.CONSTRAINT_5 INDEX PUBLIC.CONSTRAINT_INDEX_5]] with root cause\n  insert into customer (address,email,name,id) values (?,?,?,?) [23505-240]\n  at com.demo.customer.CustomerController.register\n  at com.demo.common.RequestIdFilter.doFilterInternal",
+      "expected": "code_defect",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.6917
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.0763
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.0378
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.0775
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0135
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.1033
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.2874
+        }
+      ],
+      "predicted": "code_defect",
+      "confidence": 0.6917,
+      "route": "fix_agent",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 255.6,
+      "input_tokens": 931
+    },
+    {
+      "id": "inc-009",
+      "source": "victim-app",
+      "scenario": "oom_export",
+      "ambiguous": true,
+      "log_excerpt": "ERROR o.a.c.c.C.[.[.[/].[dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Handler dispatch failed: java.lang.OutOfMemoryError: Java heap space] with root cause\nException: java.lang.OutOfMemoryError: Java heap space\n  at java.base/java.lang.invoke.LambdaForm$DMH/0x0000024610114c00.invokeVirtual(LambdaForm$DMH) ~[na:na]\n  at java.base/java.lang.invoke.LambdaForm$MH/0x00000246103b4000.invoke(LambdaForm$MH) ~[na:na]\n  at com.demo.report.ExportService.exportAllOrders\n  at com.demo.report.ReportController.export",
+      "expected": "code_defect",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.0791
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.0205
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.864
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.025
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0044
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.007
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.3657
+        }
+      ],
+      "predicted": "capacity",
+      "confidence": 0.864,
+      "route": "ops_ticket",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 245.7,
+      "input_tokens": 640
+    },
+    {
+      "id": "inc-010",
+      "source": "victim-app",
+      "scenario": "missing_config",
+      "ambiguous": false,
+      "log_excerpt": "ERROR o.a.c.c.C.[.[.[/].[dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.IllegalStateException: Required key 'shipping.partner.api-key' not found] with root cause\nException: java.lang.IllegalStateException: Required key 'shipping.partner.api-key' not found\n  at com.demo.shipping.ShippingClient.quote\n  at com.demo.order.OrderController.shippingQuote\n  at com.demo.common.RequestIdFilter.doFilterInternal",
+      "expected": "configuration",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.1916
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.7347
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.0082
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.038
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0056
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.0219
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.3596
+        }
+      ],
+      "predicted": "configuration",
+      "confidence": 0.7347,
+      "route": "config_ticket",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 255.2,
+      "input_tokens": 573
+    },
+    {
+      "id": "inc-011",
+      "source": "victim-app",
+      "scenario": "payment_unavailable",
+      "ambiguous": false,
+      "log_excerpt": "ERROR com.demo.payment.PaymentService: Payment failed for order 9\nException: org.springframework.web.client.HttpServerErrorException$ServiceUnavailable: 503 : \"{\"error\":\"maintenance\"}\"\n  at com.demo.payment.PaymentGatewayClient.charge\n  at com.demo.payment.PaymentService.pay\n  at com.demo.order.OrderController.pay\n  at com.demo.common.RequestIdFilter.doFilterInternal",
+      "expected": "dependency",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.0454
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.0285
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.024
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.8832
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0064
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.0126
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.3397
+        }
+      ],
+      "predicted": "dependency",
+      "confidence": 0.8832,
+      "route": "dependency_owner_ticket",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 247.8,
+      "input_tokens": 544
+    },
+    {
+      "id": "inc-012",
+      "source": "victim-app",
+      "scenario": "optimistic_lock",
+      "ambiguous": false,
+      "log_excerpt": "ERROR o.a.c.c.C.[.[.[/].[dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.orm.ObjectOptimisticLockingFailureException: Row was already updated or deleted by another transaction for entity [co…\nException: org.hibernate.StaleObjectStateException: Row was already updated or deleted by another transaction for entity [com.demo.order.ShopOrder with id '10']\n  at com.demo.order.OrderService.cancel\n  at com.demo.order.OrderController.cancel\n  at com.demo.common.RequestIdFilter.doFilterInternal",
+      "expected": "code_defect",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.7716
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.0692
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.0315
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.0876
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0124
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.0276
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.3604
+        }
+      ],
+      "predicted": "code_defect",
+      "confidence": 0.7716,
+      "route": "fix_agent",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 250.1,
+      "input_tokens": 590
+    },
+    {
+      "id": "inc-013",
+      "source": "victim-app",
+      "scenario": "thread_pool_rejected",
+      "ambiguous": false,
+      "log_excerpt": "ERROR o.a.c.c.C.[.[.[/].[dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.util.concurrent.RejectedExecutionException: Task com.demo.notification.NotificationService$$Lambda/0x0000024610b4ac90@260ea71e rejec…\nException: java.util.concurrent.RejectedExecutionException: Task com.demo.notification.NotificationService$$Lambda/0x0000024610b4ac90@260ea71e rejected from java.util.concurrent.ThreadPoolExecutor@1ce45e18[Running, pool size = 1, active threads = 1, queued tasks = 1, completed tasks = 0]\n  at com.demo.notification.NotificationService.notifyCustomer\n  at com.demo.order.OrderController.notifyCustomer\n  at com.demo.common.RequestIdFilter.doFilterInternal",
+      "expected": "capacity",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.3257
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.0525
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.4641
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.1305
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0109
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.0163
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.432
+        }
+      ],
+      "predicted": "capacity",
+      "confidence": 0.4641,
+      "route": "escalate",
+      "escalated": true,
+      "reason": "low_confidence",
+      "suggestions": [
+        [
+          "capacity",
+          0.4641
+        ],
+        [
+          "code_defect",
+          0.3257
+        ]
+      ],
+      "latency_ms": 247.3,
+      "input_tokens": 665
+    },
+    {
+      "id": "inc-014",
+      "source": "victim-app",
+      "scenario": "payment_connection_refused",
+      "ambiguous": false,
+      "log_excerpt": "ERROR com.demo.payment.PaymentService: Payment failed for order 14\nException: org.springframework.web.client.ResourceAccessException: I/O error on POST request for \"http://localhost:1/charge\": Connection refused: getsockopt\nCaused by: java.net.ConnectException: Connection refused: getsockopt\n  at com.demo.payment.PaymentGatewayClient.chargeOnBackup\n  at com.demo.payment.PaymentService.pay\n  at com.demo.order.OrderController.pay\n  at com.demo.common.RequestIdFilter.doFilterInternal",
+      "expected": "dependency",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.0798
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.0515
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.0213
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.8309
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0081
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.0085
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.3199
+        }
+      ],
+      "predicted": "dependency",
+      "confidence": 0.8309,
+      "route": "dependency_owner_ticket",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 473.9,
+      "input_tokens": 568
+    },
+    {
+      "id": "inc-015",
+      "source": "victim-app",
+      "scenario": "missing_config",
+      "ambiguous": false,
+      "log_excerpt": "ERROR o.a.c.c.C.[.[.[/].[dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.IllegalStateException: Required key 'shipping.partner.api-key' not found] with root cause\nException: java.lang.IllegalStateException: Required key 'shipping.partner.api-key' not found\n  at com.demo.shipping.ShippingClient.quote\n  at com.demo.order.OrderController.shippingQuote\n  at com.demo.common.RequestIdFilter.doFilterInternal",
+      "expected": "configuration",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.1916
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.7347
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.0082
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.038
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0056
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.0219
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.3596
+        }
+      ],
+      "predicted": "configuration",
+      "confidence": 0.7347,
+      "route": "config_ticket",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 249.2,
+      "input_tokens": 573
+    },
+    {
+      "id": "inc-016",
+      "source": "victim-app",
+      "scenario": "duplicate_customer",
+      "ambiguous": true,
+      "log_excerpt": "WARN org.hibernate.orm.jdbc.error: HHH000247: ErrorCode: 23505, SQLState: 23505\nWARN org.hibernate.orm.jdbc.error: Violation d'index unique ou clé primaire: \"PUBLIC.CONSTRAINT_5 INDEX PUBLIC.CONSTRAINT_INDEX_5 ON PUBLIC.CUSTOMER(EMAIL NULLS FIRST) VALUES ( /* 1 */ '<EMAIL>' )\"\n  Unique index or primary key violation: \"PUBLIC.CONSTRAINT_5 INDEX PUBLIC.CONSTRAINT_INDEX_5 ON PUBLIC.CUSTOMER(EMAIL NULLS FIRST) VALUES ( /* 1 */ '<EMAIL>' )\"; SQL statement:\n  insert into customer (address,email,name,id) values (?,?,?,?) [23505-240]\nERROR o.a.c.c.C.[.[.[/].[dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.dao.DataIntegrityViolationException: could not execute statement [Violation d'index unique ou clé primaire: \"PUBLIC.C…\nException: org.h2.jdbc.JdbcSQLIntegrityConstraintViolationException: Violation d'index unique ou clé primaire: \"PUBLIC.CONSTRAINT_5 INDEX PUBLIC.CONSTRAINT_INDEX_5 ON PUBLIC.CUSTOMER(EMAIL NULLS FIRST) VALUES ( /* 1 */ '<EMAIL>' )\"\n  Unique index or primary key violation: \"PUBLIC.CONSTRAINT_5 INDEX PUBLIC.CONSTRAINT_INDEX_5 ON PUBLIC.CUSTOMER(EMAIL NULLS FIRST) VALUES ( /* 1 */ '<EMAIL>' )\"; SQL statement:\n  insert into customer (address,email,name,id) values (?,?,?,?) [23505-240]] [insert into customer (address,email,name,id) values (?,?,?,?)]; SQL [insert into customer (address,email,name,id) values (?,?,?,?)]; constraint [PUBLIC.CONSTRAINT_5 INDEX PUBLIC.CONSTRAINT_INDEX_5]] with root cause\n  insert into customer (address,email,name,id) values (?,?,?,?) [23505-240]\n  at com.demo.customer.CustomerController.register\n  at com.demo.common.RequestIdFilter.doFilterInternal",
+      "expected": "code_defect",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.6917
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.0763
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.0378
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.0775
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0135
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.1033
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.2874
+        }
+      ],
+      "predicted": "code_defect",
+      "confidence": 0.6917,
+      "route": "fix_agent",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 246.5,
+      "input_tokens": 931
+    },
+    {
+      "id": "inc-017",
+      "source": "victim-app",
+      "scenario": "npe_guest_order",
+      "ambiguous": false,
+      "log_excerpt": "ERROR o.a.c.c.C.[.[.[/].[dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.NullPointerException: Cannot invoke \"com.demo.customer.Customer.getAddress()\" because \"customer\" is null] with root cause\nException: java.lang.NullPointerException: Cannot invoke \"com.demo.customer.Customer.getAddress()\" because \"customer\" is null\n  at com.demo.order.OrderService.validate\n  at com.demo.order.OrderService.create\n  at com.demo.order.OrderController.create\n  at com.demo.common.RequestIdFilter.doFilterInternal",
+      "expected": "code_defect",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.8053
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.0461
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.0177
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.0847
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0099
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.0363
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.3502
+        }
+      ],
+      "predicted": "code_defect",
+      "confidence": 0.8053,
+      "route": "fix_agent",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 246.7,
+      "input_tokens": 586
+    },
+    {
+      "id": "inc-018",
+      "source": "victim-app",
+      "scenario": "json_parse_error",
+      "ambiguous": false,
+      "log_excerpt": "ERROR com.demo.catalog.CatalogController: Catalog import failed for supplier acme\nException: tools.jackson.core.exc.UnexpectedEndOfInputException: Unexpected end-of-input within/between Object entries\n  at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); byte offset: #UNKNOWN]\n  at com.demo.catalog.CatalogController.importFeed\n  at com.demo.common.RequestIdFilter.doFilterInternal",
+      "expected": "data_quality",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.2838
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.0379
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.0197
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.0874
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0098
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.5613
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.2533
+        }
+      ],
+      "predicted": "data_quality",
+      "confidence": 0.5613,
+      "route": "escalate",
+      "escalated": true,
+      "reason": "low_confidence",
+      "suggestions": [
+        [
+          "data_quality",
+          0.5613
+        ],
+        [
+          "code_defect",
+          0.2838
+        ]
+      ],
+      "latency_ms": 246.1,
+      "input_tokens": 553
+    },
+    {
+      "id": "inc-019",
+      "source": "victim-app",
+      "scenario": "optimistic_lock",
+      "ambiguous": false,
+      "log_excerpt": "ERROR o.a.c.c.C.[.[.[/].[dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.orm.ObjectOptimisticLockingFailureException: Row was already updated or deleted by another transaction for entity [co…\nException: org.hibernate.StaleObjectStateException: Row was already updated or deleted by another transaction for entity [com.demo.order.ShopOrder with id '16']\n  at com.demo.order.OrderService.cancel\n  at com.demo.order.OrderController.cancel\n  at com.demo.common.RequestIdFilter.doFilterInternal",
+      "expected": "code_defect",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.769
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.0691
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.031
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.0907
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0123
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.0279
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.3597
+        }
+      ],
+      "predicted": "code_defect",
+      "confidence": 0.769,
+      "route": "fix_agent",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 248.3,
+      "input_tokens": 590
+    },
+    {
+      "id": "inc-020",
+      "source": "victim-app",
+      "scenario": "db_pool_exhausted",
+      "ambiguous": false,
+      "log_excerpt": "WARN org.hibernate.orm.jdbc.error: HHH000247: ErrorCode: 0, SQLState: null\nWARN org.hibernate.orm.jdbc.error: HikariPool-1 - Connection is not available, request timed out after 1011ms (total=2, active=2, idle=0, waiting=1)\nERROR o.a.c.c.C.[.[.[/].[dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.transaction.CannotCreateTransactionException: Could not open JPA EntityManager for transaction] with root cause\nException: java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 1011ms (total=2, active=2, idle=0, waiting=1)\n  at com.demo.report.ReportController.sales\n  at com.demo.common.RequestIdFilter.doFilterInternal",
+      "expected": "capacity",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.1794
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.1269
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.4772
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.1942
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0088
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.0135
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.3724
+        }
+      ],
+      "predicted": "capacity",
+      "confidence": 0.4772,
+      "route": "escalate",
+      "escalated": true,
+      "reason": "low_confidence",
+      "suggestions": [
+        [
+          "capacity",
+          0.4772
+        ],
+        [
+          "dependency",
+          0.1942
+        ]
+      ],
+      "latency_ms": 245.6,
+      "input_tokens": 662
+    },
+    {
+      "id": "inc-021",
+      "source": "victim-app",
+      "scenario": "db_pool_exhausted",
+      "ambiguous": false,
+      "log_excerpt": "WARN org.hibernate.orm.jdbc.error: HHH000247: ErrorCode: 0, SQLState: null\nWARN org.hibernate.orm.jdbc.error: HikariPool-1 - Connection is not available, request timed out after 1006ms (total=2, active=2, idle=0, waiting=0)\nERROR o.a.c.c.C.[.[.[/].[dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.transaction.CannotCreateTransactionException: Could not open JPA EntityManager for transaction] with root cause\nException: java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 1006ms (total=2, active=2, idle=0, waiting=0)\n  at com.demo.report.ReportController.sales\n  at com.demo.common.RequestIdFilter.doFilterInternal",
+      "expected": "capacity",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.1881
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.132
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.4474
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.21
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.009
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.0136
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.3724
+        }
+      ],
+      "predicted": "capacity",
+      "confidence": 0.4474,
+      "route": "escalate",
+      "escalated": true,
+      "reason": "low_confidence",
+      "suggestions": [
+        [
+          "capacity",
+          0.4474
+        ],
+        [
+          "dependency",
+          0.21
+        ]
+      ],
+      "latency_ms": 240.8,
+      "input_tokens": 662
+    },
+    {
+      "id": "inc-022",
+      "source": "victim-app",
+      "scenario": "promo_index_bug",
+      "ambiguous": false,
+      "log_excerpt": "ERROR o.a.c.c.C.[.[.[/].[dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.ArrayIndexOutOfBoundsException: Index 0 out of bounds for length 0] with root cause\nException: java.lang.ArrayIndexOutOfBoundsException: Index 0 out of bounds for length 0\n  at com.demo.order.DiscountService.apply\n  at com.demo.order.OrderService.create\n  at com.demo.order.OrderController.create\n  at com.demo.common.RequestIdFilter.doFilterInternal",
+      "expected": "code_defect",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.7706
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.0634
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.0312
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.101
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0104
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.0233
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.4602
+        }
+      ],
+      "predicted": "code_defect",
+      "confidence": 0.7706,
+      "route": "fix_agent",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 259.9,
+      "input_tokens": 579
+    },
+    {
+      "id": "inc-023",
+      "source": "victim-app",
+      "scenario": "payment_connection_refused",
+      "ambiguous": false,
+      "log_excerpt": "ERROR com.demo.payment.PaymentService: Payment failed for order 18\nException: org.springframework.web.client.ResourceAccessException: I/O error on POST request for \"http://localhost:1/charge\": Connection refused: getsockopt\nCaused by: java.net.ConnectException: Connection refused: getsockopt\n  at com.demo.payment.PaymentGatewayClient.chargeOnBackup\n  at com.demo.payment.PaymentService.pay\n  at com.demo.order.OrderController.pay\n  at com.demo.common.RequestIdFilter.doFilterInternal",
+      "expected": "dependency",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.0789
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.051
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.0211
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.8323
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0082
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.0085
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.3224
+        }
+      ],
+      "predicted": "dependency",
+      "confidence": 0.8323,
+      "route": "dependency_owner_ticket",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 249.4,
+      "input_tokens": 568
+    },
+    {
+      "id": "inc-024",
+      "source": "victim-app",
+      "scenario": "payment_timeout",
+      "ambiguous": false,
+      "log_excerpt": "ERROR com.demo.payment.PaymentService: Payment failed for order 19\nException: org.springframework.web.client.RestClientException: Error while extracting response for type [java.lang.String] and content type [application/octet-stream]\nCaused by: java.net.SocketTimeoutException: Read timed out\n  at com.demo.payment.PaymentGatewayClient.charge\n  at com.demo.payment.PaymentService.pay\n  at com.demo.order.OrderController.pay\n  at com.demo.common.RequestIdFilter.doFilterInternal",
+      "expected": "dependency",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.105
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.0331
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.0321
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.8005
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0088
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.0205
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.3993
+        }
+      ],
+      "predicted": "dependency",
+      "confidence": 0.8005,
+      "route": "dependency_owner_ticket",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 245.4,
+      "input_tokens": 564
+    },
+    {
+      "id": "inc-025",
+      "source": "victim-app",
+      "scenario": "oom_export",
+      "ambiguous": true,
+      "log_excerpt": "ERROR o.a.c.c.C.[.[.[/].[dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Handler dispatch failed: java.lang.OutOfMemoryError: Java heap space] with root cause\nException: java.lang.OutOfMemoryError: Java heap space\n  at java.base/java.lang.invoke.LambdaForm$DMH/0x0000024610114c00.invokeVirtual(LambdaForm$DMH) ~[na:na]\n  at java.base/java.lang.invoke.LambdaForm$MH/0x00000246103b4000.invoke(LambdaForm$MH) ~[na:na]\n  at com.demo.report.ExportService.exportAllOrders\n  at com.demo.report.ReportController.export",
+      "expected": "code_defect",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.0791
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.0205
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.864
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.025
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0044
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.007
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.3657
+        }
+      ],
+      "predicted": "capacity",
+      "confidence": 0.864,
+      "route": "ops_ticket",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 243.4,
+      "input_tokens": 640
+    },
+    {
+      "id": "inc-026",
+      "source": "victim-app",
+      "scenario": "tls_cert_expired",
+      "ambiguous": false,
+      "log_excerpt": "ERROR com.demo.order.OrderController: Fraud check unavailable for order 20, order kept on hold\nException: org.springframework.web.client.ResourceAccessException: I/O error on POST request for \"https://risk.partner-fraudshield.example/v2/score\": PKIX path validation failed: java.security.cert.CertPathValidatorException: validity check failed\nCaused by: javax.net.ssl.SSLHandshakeException: PKIX path validation failed: java.security.cert.CertPathValidatorException: validity check failed\nCaused by: java.security.cert.CertificateExpiredException: NotAfter: Sat Oct 03 23:59:59 CEST 2026\n  at com.demo.fraud.FraudCheckClient.isSuspicious\n  at com.demo.order.OrderController.fraudCheck\n  at com.demo.common.RequestIdFilter.doFilterInternal",
+      "expected": "security_certificate",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.0761
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.041
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.0089
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.3327
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.531
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.0102
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.1984
+        }
+      ],
+      "predicted": "security_certificate",
+      "confidence": 0.531,
+      "route": "escalate",
+      "escalated": true,
+      "reason": "low_confidence",
+      "suggestions": [
+        [
+          "security_certificate",
+          0.531
+        ],
+        [
+          "dependency",
+          0.3327
+        ]
+      ],
+      "latency_ms": 243.4,
+      "input_tokens": 640
+    },
+    {
+      "id": "inc-027",
+      "source": "victim-app",
+      "scenario": "json_parse_error",
+      "ambiguous": false,
+      "log_excerpt": "ERROR com.demo.catalog.CatalogController: Catalog import failed for supplier acme\nException: tools.jackson.core.exc.UnexpectedEndOfInputException: Unexpected end-of-input within/between Object entries\n  at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); byte offset: #UNKNOWN]\n  at com.demo.catalog.CatalogController.importFeed\n  at com.demo.common.RequestIdFilter.doFilterInternal",
+      "expected": "data_quality",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.2838
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.0379
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.0197
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.0874
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0098
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.5613
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.2533
+        }
+      ],
+      "predicted": "data_quality",
+      "confidence": 0.5613,
+      "route": "escalate",
+      "escalated": true,
+      "reason": "low_confidence",
+      "suggestions": [
+        [
+          "data_quality",
+          0.5613
+        ],
+        [
+          "code_defect",
+          0.2838
+        ]
+      ],
+      "latency_ms": 245.2,
+      "input_tokens": 553
+    },
+    {
+      "id": "inc-028",
+      "source": "victim-app",
+      "scenario": "tls_cert_expired",
+      "ambiguous": false,
+      "log_excerpt": "ERROR com.demo.order.OrderController: Fraud check unavailable for order 23, order kept on hold\nException: org.springframework.web.client.ResourceAccessException: I/O error on POST request for \"https://risk.partner-fraudshield.example/v2/score\": PKIX path validation failed: java.security.cert.CertPathValidatorException: validity check failed\nCaused by: javax.net.ssl.SSLHandshakeException: PKIX path validation failed: java.security.cert.CertPathValidatorException: validity check failed\nCaused by: java.security.cert.CertificateExpiredException: NotAfter: Sat Oct 03 23:59:59 CEST 2026\n  at com.demo.fraud.FraudCheckClient.isSuspicious\n  at com.demo.order.OrderController.fraudCheck\n  at com.demo.common.RequestIdFilter.doFilterInternal",
+      "expected": "security_certificate",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.0739
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.0414
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.0088
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.34
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.5259
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.0101
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.1937
+        }
+      ],
+      "predicted": "security_certificate",
+      "confidence": 0.5259,
+      "route": "escalate",
+      "escalated": true,
+      "reason": "low_confidence",
+      "suggestions": [
+        [
+          "security_certificate",
+          0.5259
+        ],
+        [
+          "dependency",
+          0.34
+        ]
+      ],
+      "latency_ms": 243.6,
+      "input_tokens": 640
+    },
+    {
+      "id": "inc-029",
+      "source": "victim-app",
+      "scenario": "db_pool_exhausted",
+      "ambiguous": false,
+      "log_excerpt": "WARN org.hibernate.orm.jdbc.error: HHH000247: ErrorCode: 0, SQLState: null\nWARN org.hibernate.orm.jdbc.error: HikariPool-1 - Connection is not available, request timed out after 1009ms (total=2, active=2, idle=0, waiting=0)\nERROR o.a.c.c.C.[.[.[/].[dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.transaction.CannotCreateTransactionException: Could not open JPA EntityManager for transaction] with root cause\nException: java.sql.SQLTransientConnectionException: HikariPool-1 - Connection is not available, request timed out after 1009ms (total=2, active=2, idle=0, waiting=0)\n  at com.demo.report.ReportController.sales\n  at com.demo.common.RequestIdFilter.doFilterInternal",
+      "expected": "capacity",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.1888
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.1299
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.4599
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.1987
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.009
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.0137
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.3756
+        }
+      ],
+      "predicted": "capacity",
+      "confidence": 0.4599,
+      "route": "escalate",
+      "escalated": true,
+      "reason": "low_confidence",
+      "suggestions": [
+        [
+          "capacity",
+          0.4599
+        ],
+        [
+          "dependency",
+          0.1987
+        ]
+      ],
+      "latency_ms": 246.5,
+      "input_tokens": 662
+    },
+    {
+      "id": "inc-030",
+      "source": "victim-app",
+      "scenario": "thread_pool_rejected",
+      "ambiguous": false,
+      "log_excerpt": "ERROR o.a.c.c.C.[.[.[/].[dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.util.concurrent.RejectedExecutionException: Task com.demo.notification.NotificationService$$Lambda/0x0000024610b4ac90@103e7b5a rejec…\nException: java.util.concurrent.RejectedExecutionException: Task com.demo.notification.NotificationService$$Lambda/0x0000024610b4ac90@103e7b5a rejected from java.util.concurrent.ThreadPoolExecutor@1ce45e18[Running, pool size = 1, active threads = 0, queued tasks = 0, completed tasks = 2]\n  at com.demo.notification.NotificationService.notifyCustomer\n  at com.demo.order.OrderController.notifyCustomer\n  at com.demo.common.RequestIdFilter.doFilterInternal",
+      "expected": "capacity",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.2978
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.0461
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.5077
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.1227
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0102
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.0154
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.4142
+        }
+      ],
+      "predicted": "capacity",
+      "confidence": 0.5077,
+      "route": "escalate",
+      "escalated": true,
+      "reason": "low_confidence",
+      "suggestions": [
+        [
+          "capacity",
+          0.5077
+        ],
+        [
+          "code_defect",
+          0.2978
+        ]
+      ],
+      "latency_ms": 242.6,
+      "input_tokens": 667
+    },
+    {
+      "id": "inc-031",
+      "source": "victim-app",
+      "scenario": "missing_config",
+      "ambiguous": false,
+      "log_excerpt": "ERROR o.a.c.c.C.[.[.[/].[dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.IllegalStateException: Required key 'shipping.partner.api-key' not found] with root cause\nException: java.lang.IllegalStateException: Required key 'shipping.partner.api-key' not found\n  at com.demo.shipping.ShippingClient.quote\n  at com.demo.order.OrderController.shippingQuote\n  at com.demo.common.RequestIdFilter.doFilterInternal",
+      "expected": "configuration",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.1916
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.7347
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.0082
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.038
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0056
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.0219
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.3596
+        }
+      ],
+      "predicted": "configuration",
+      "confidence": 0.7347,
+      "route": "config_ticket",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 248.6,
+      "input_tokens": 573
+    },
+    {
+      "id": "inc-032",
+      "source": "victim-app",
+      "scenario": "duplicate_customer",
+      "ambiguous": true,
+      "log_excerpt": "WARN org.hibernate.orm.jdbc.error: HHH000247: ErrorCode: 23505, SQLState: 23505\nWARN org.hibernate.orm.jdbc.error: Violation d'index unique ou clé primaire: \"PUBLIC.CONSTRAINT_5 INDEX PUBLIC.CONSTRAINT_INDEX_5 ON PUBLIC.CUSTOMER(EMAIL NULLS FIRST) VALUES ( /* 1 */ '<EMAIL>' )\"\n  Unique index or primary key violation: \"PUBLIC.CONSTRAINT_5 INDEX PUBLIC.CONSTRAINT_INDEX_5 ON PUBLIC.CUSTOMER(EMAIL NULLS FIRST) VALUES ( /* 1 */ '<EMAIL>' )\"; SQL statement:\n  insert into customer (address,email,name,id) values (?,?,?,?) [23505-240]\nERROR o.a.c.c.C.[.[.[/].[dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.dao.DataIntegrityViolationException: could not execute statement [Violation d'index unique ou clé primaire: \"PUBLIC.C…\nException: org.h2.jdbc.JdbcSQLIntegrityConstraintViolationException: Violation d'index unique ou clé primaire: \"PUBLIC.CONSTRAINT_5 INDEX PUBLIC.CONSTRAINT_INDEX_5 ON PUBLIC.CUSTOMER(EMAIL NULLS FIRST) VALUES ( /* 1 */ '<EMAIL>' )\"\n  Unique index or primary key violation: \"PUBLIC.CONSTRAINT_5 INDEX PUBLIC.CONSTRAINT_INDEX_5 ON PUBLIC.CUSTOMER(EMAIL NULLS FIRST) VALUES ( /* 1 */ '<EMAIL>' )\"; SQL statement:\n  insert into customer (address,email,name,id) values (?,?,?,?) [23505-240]] [insert into customer (address,email,name,id) values (?,?,?,?)]; SQL [insert into customer (address,email,name,id) values (?,?,?,?)]; constraint [PUBLIC.CONSTRAINT_5 INDEX PUBLIC.CONSTRAINT_INDEX_5]] with root cause\n  insert into customer (address,email,name,id) values (?,?,?,?) [23505-240]\n  at com.demo.customer.CustomerController.register\n  at com.demo.common.RequestIdFilter.doFilterInternal",
+      "expected": "code_defect",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.6917
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.0763
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.0378
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.0775
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0135
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.1033
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.2874
+        }
+      ],
+      "predicted": "code_defect",
+      "confidence": 0.6917,
+      "route": "fix_agent",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 239.4,
+      "input_tokens": 931
+    },
+    {
+      "id": "inc-033",
+      "source": "victim-app",
+      "scenario": "promo_index_bug",
+      "ambiguous": false,
+      "log_excerpt": "ERROR o.a.c.c.C.[.[.[/].[dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.ArrayIndexOutOfBoundsException: Index 0 out of bounds for length 0] with root cause\nException: java.lang.ArrayIndexOutOfBoundsException: Index 0 out of bounds for length 0\n  at com.demo.order.DiscountService.apply\n  at com.demo.order.OrderService.create\n  at com.demo.order.OrderController.create\n  at com.demo.common.RequestIdFilter.doFilterInternal",
+      "expected": "code_defect",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.7706
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.0634
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.0312
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.101
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0104
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.0233
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.4602
+        }
+      ],
+      "predicted": "code_defect",
+      "confidence": 0.7706,
+      "route": "fix_agent",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 238.6,
+      "input_tokens": 579
+    },
+    {
+      "id": "inc-034",
+      "source": "victim-app",
+      "scenario": "oom_export",
+      "ambiguous": true,
+      "log_excerpt": "ERROR o.a.c.c.C.[.[.[/].[dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Handler dispatch failed: java.lang.OutOfMemoryError: Java heap space] with root cause\nException: java.lang.OutOfMemoryError: Java heap space\n  at java.base/java.lang.invoke.LambdaForm$DMH/0x0000024610114c00.invokeVirtual(LambdaForm$DMH) ~[na:na]\n  at java.base/java.lang.invoke.LambdaForm$MH/0x00000246103b4000.invoke(LambdaForm$MH) ~[na:na]\n  at com.demo.report.ExportService.exportAllOrders\n  at com.demo.report.ReportController.export",
+      "expected": "code_defect",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.0791
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.0205
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.864
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.025
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0044
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.007
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.3657
+        }
+      ],
+      "predicted": "capacity",
+      "confidence": 0.864,
+      "route": "ops_ticket",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 247.7,
+      "input_tokens": 640
+    },
+    {
+      "id": "inc-035",
+      "source": "victim-app",
+      "scenario": "json_parse_error",
+      "ambiguous": false,
+      "log_excerpt": "ERROR com.demo.catalog.CatalogController: Catalog import failed for supplier acme\nException: tools.jackson.core.exc.UnexpectedEndOfInputException: Unexpected end-of-input within/between Object entries\n  at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); byte offset: #UNKNOWN]\n  at com.demo.catalog.CatalogController.importFeed\n  at com.demo.common.RequestIdFilter.doFilterInternal",
+      "expected": "data_quality",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.2838
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.0379
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.0197
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.0874
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0098
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.5613
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.2533
+        }
+      ],
+      "predicted": "data_quality",
+      "confidence": 0.5613,
+      "route": "escalate",
+      "escalated": true,
+      "reason": "low_confidence",
+      "suggestions": [
+        [
+          "data_quality",
+          0.5613
+        ],
+        [
+          "code_defect",
+          0.2838
+        ]
+      ],
+      "latency_ms": 244.6,
+      "input_tokens": 553
+    },
+    {
+      "id": "inc-036",
+      "source": "victim-app",
+      "scenario": "payment_timeout",
+      "ambiguous": false,
+      "log_excerpt": "ERROR com.demo.payment.PaymentService: Payment failed for order 36\nException: org.springframework.web.client.RestClientException: Error while extracting response for type [java.lang.String] and content type [application/octet-stream]\nCaused by: java.net.SocketTimeoutException: Read timed out\n  at com.demo.payment.PaymentGatewayClient.charge\n  at com.demo.payment.PaymentService.pay\n  at com.demo.order.OrderController.pay\n  at com.demo.common.RequestIdFilter.doFilterInternal",
+      "expected": "dependency",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.1053
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.0352
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.034
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.7952
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0092
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.021
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.4043
+        }
+      ],
+      "predicted": "dependency",
+      "confidence": 0.7952,
+      "route": "dependency_owner_ticket",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 245.2,
+      "input_tokens": 564
+    },
+    {
+      "id": "inc-037",
+      "source": "victim-app",
+      "scenario": "payment_timeout",
+      "ambiguous": false,
+      "log_excerpt": "ERROR com.demo.payment.PaymentService: Payment failed for order 38\nException: org.springframework.web.client.RestClientException: Error while extracting response for type [java.lang.String] and content type [application/octet-stream]\nCaused by: java.net.SocketTimeoutException: Read timed out\n  at com.demo.payment.PaymentGatewayClient.charge\n  at com.demo.payment.PaymentService.pay\n  at com.demo.order.OrderController.pay\n  at com.demo.common.RequestIdFilter.doFilterInternal",
+      "expected": "dependency",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.1047
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.0336
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.034
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.7978
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0091
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.0208
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.404
+        }
+      ],
+      "predicted": "dependency",
+      "confidence": 0.7978,
+      "route": "dependency_owner_ticket",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 245.2,
+      "input_tokens": 564
+    },
+    {
+      "id": "inc-038",
+      "source": "victim-app",
+      "scenario": "payment_connection_refused",
+      "ambiguous": false,
+      "log_excerpt": "ERROR com.demo.payment.PaymentService: Payment failed for order 41\nException: org.springframework.web.client.ResourceAccessException: I/O error on POST request for \"http://localhost:1/charge\": Connection refused: getsockopt\nCaused by: java.net.ConnectException: Connection refused: getsockopt\n  at com.demo.payment.PaymentGatewayClient.chargeOnBackup\n  at com.demo.payment.PaymentService.pay\n  at com.demo.order.OrderController.pay\n  at com.demo.common.RequestIdFilter.doFilterInternal",
+      "expected": "dependency",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.0797
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.0544
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.0215
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.8278
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0081
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.0084
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.3215
+        }
+      ],
+      "predicted": "dependency",
+      "confidence": 0.8278,
+      "route": "dependency_owner_ticket",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 244.8,
+      "input_tokens": 568
+    },
+    {
+      "id": "inc-039",
+      "source": "victim-app",
+      "scenario": "noise_warning",
+      "ambiguous": false,
+      "log_excerpt": "WARN com.demo.catalog.CatalogController: Low stock for product 43: 2 left",
+      "expected": "NONE",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.3718
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.0912
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.0649
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.3694
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0207
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.0819
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.5586
+        }
+      ],
+      "predicted": "NONE",
+      "confidence": 0.3718,
+      "route": "escalate",
+      "escalated": true,
+      "reason": "none",
+      "suggestions": [],
+      "latency_ms": 446.6,
+      "input_tokens": 484
+    },
+    {
+      "id": "inc-040",
+      "source": "victim-app",
+      "scenario": "noise_warning",
+      "ambiguous": false,
+      "log_excerpt": "WARN com.demo.catalog.CatalogController: Low stock for product 30: 3 left",
+      "expected": "NONE",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.3688
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.0878
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.0657
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.3761
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0205
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.081
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.5781
+        }
+      ],
+      "predicted": "NONE",
+      "confidence": 0.3761,
+      "route": "escalate",
+      "escalated": true,
+      "reason": "none",
+      "suggestions": [],
+      "latency_ms": 246.3,
+      "input_tokens": 484
+    },
+    {
+      "id": "inc-041",
+      "source": "victim-app",
+      "scenario": "noise_warning",
+      "ambiguous": false,
+      "log_excerpt": "WARN com.demo.catalog.CatalogController: Deprecated API version 1 used on /products",
+      "expected": "NONE",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.6893
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.0775
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.0255
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.1623
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0154
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.0301
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.5467
+        }
+      ],
+      "predicted": "NONE",
+      "confidence": 0.6893,
+      "route": "escalate",
+      "escalated": true,
+      "reason": "none",
+      "suggestions": [],
+      "latency_ms": 243.5,
+      "input_tokens": 482
+    },
+    {
+      "id": "inc-042",
+      "source": "victim-app",
+      "scenario": "noise_warning",
+      "ambiguous": false,
+      "log_excerpt": "WARN com.demo.catalog.CatalogController: Deprecated API version 1 used on /products",
+      "expected": "NONE",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.6893
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.0775
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.0255
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.1623
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0154
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.0301
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.5467
+        }
+      ],
+      "predicted": "NONE",
+      "confidence": 0.6893,
+      "route": "escalate",
+      "escalated": true,
+      "reason": "none",
+      "suggestions": [],
+      "latency_ms": 245.1,
+      "input_tokens": 482
+    },
+    {
+      "id": "inc-043",
+      "source": "victim-app",
+      "scenario": "noise_warning",
+      "ambiguous": true,
+      "log_excerpt": "WARN com.demo.payment.PaymentService: Payment gateway slow response: 588 ms for order 22",
+      "expected": "NONE",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.0446
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.0288
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.0582
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.8525
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.005
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.0109
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.3598
+        }
+      ],
+      "predicted": "dependency",
+      "confidence": 0.8525,
+      "route": "dependency_owner_ticket",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 262.2,
+      "input_tokens": 487
+    },
+    {
+      "id": "inc-044",
+      "source": "victim-app",
+      "scenario": "noise_warning",
+      "ambiguous": true,
+      "log_excerpt": "WARN com.demo.payment.PaymentService: Payment gateway slow response: 567 ms for order 24",
+      "expected": "NONE",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.0449
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.028
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.0558
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.8552
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0051
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.011
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.36
+        }
+      ],
+      "predicted": "dependency",
+      "confidence": 0.8552,
+      "route": "dependency_owner_ticket",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 244.7,
+      "input_tokens": 487
+    },
+    {
+      "id": "inc-045",
+      "source": "handwritten",
+      "scenario": "postgres_too_many_clients",
+      "ambiguous": false,
+      "log_excerpt": "ERROR c.a.billing.InvoiceJob: Invoice batch aborted\nException: org.postgresql.util.PSQLException: FATAL: sorry, too many clients already\n  at com.acme.billing.InvoiceJob.run",
+      "expected": "capacity",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.2413
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.0372
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.6306
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.067
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0102
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.0137
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.4115
+        }
+      ],
+      "predicted": "capacity",
+      "confidence": 0.6306,
+      "route": "ops_ticket",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 482.4,
+      "input_tokens": 508
+    },
+    {
+      "id": "inc-046",
+      "source": "handwritten",
+      "scenario": "disk_full",
+      "ambiguous": false,
+      "log_excerpt": "ERROR c.a.report.PdfArchiver: Cannot archive monthly report\nException: java.io.IOException: No space left on device\n  at com.acme.report.PdfArchiver.archive\n  at com.acme.report.MonthlyReportJob.execute",
+      "expected": "capacity",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.1218
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.043
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.7787
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.0389
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0062
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.0113
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.3047
+        }
+      ],
+      "predicted": "capacity",
+      "confidence": 0.7787,
+      "route": "ops_ticket",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 236.3,
+      "input_tokens": 514
+    },
+    {
+      "id": "inc-047",
+      "source": "handwritten",
+      "scenario": "class_cast_mapper",
+      "ambiguous": false,
+      "log_excerpt": "ERROR o.a.c.c.C.[.[.[/].[dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] threw exception [Request processing failed: java.lang.ClassCastException: class java.lang.Integer cannot be cast to class java.lang.Long] with root cause\nException: java.lang.ClassCastException: class java.lang.Integer cannot be cast to class java.lang.Long (java.lang.Integer and java.lang.Long are in module java.base of loader 'bootstrap')\n  at com.acme.crm.contact.ContactMapper.toDto\n  at com.acme.crm.contact.ContactController.get",
+      "expected": "code_defect",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.7477
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.0548
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.0219
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.1003
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0105
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.0649
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.3491
+        }
+      ],
+      "predicted": "code_defect",
+      "confidence": 0.7477,
+      "route": "fix_agent",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 238.7,
+      "input_tokens": 577
+    },
+    {
+      "id": "inc-048",
+      "source": "handwritten",
+      "scenario": "enum_value_of_user_input",
+      "ambiguous": false,
+      "log_excerpt": "ERROR o.a.c.c.C.[.[.[/].[dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] threw exception [Request processing failed: java.lang.IllegalArgumentException: No enum constant com.acme.crm.contact.Channel.SMS_PRO] with root cause\nException: java.lang.IllegalArgumentException: No enum constant com.acme.crm.contact.Channel.SMS_PRO\n  at com.acme.crm.contact.Channel.valueOf\n  at com.acme.crm.contact.ContactService.subscribe",
+      "expected": "code_defect",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.5499
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.3211
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.0161
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.0748
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0097
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.0283
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.2886
+        }
+      ],
+      "predicted": "code_defect",
+      "confidence": 0.5499,
+      "route": "escalate",
+      "escalated": true,
+      "reason": "low_confidence",
+      "suggestions": [
+        [
+          "code_defect",
+          0.5499
+        ],
+        [
+          "configuration",
+          0.3211
+        ]
+      ],
+      "latency_ms": 242.2,
+      "input_tokens": 557
+    },
+    {
+      "id": "inc-049",
+      "source": "handwritten",
+      "scenario": "property_binding_invalid",
+      "ambiguous": false,
+      "log_excerpt": "ERROR o.s.b.d.LoggingFailureAnalysisReporter: \n  APPLICATION FAILED TO START\n  Description:\n  Failed to bind properties under 'notifier.smtp.port' to java.lang.Integer:\n  Property: notifier.smtp.port\n  Value: \"${SMTP_PORT}\"\n  Origin: class path resource [application.yml] - 14:13\n  Reason: failed to convert java.lang.String to java.lang.Integer\n  Action:",
+      "expected": "configuration",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.2095
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.7514
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.0069
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.0179
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0044
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.0099
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.2994
+        }
+      ],
+      "predicted": "configuration",
+      "confidence": 0.7514,
+      "route": "config_ticket",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 249.3,
+      "input_tokens": 554
+    },
+    {
+      "id": "inc-050",
+      "source": "handwritten",
+      "scenario": "placeholder_unresolved",
+      "ambiguous": false,
+      "log_excerpt": "ERROR o.s.boot.SpringApplication: Application run failed\nException: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jwtDecoder': Injection of autowired dependencies failed\nCaused by: java.lang.IllegalArgumentException: Could not resolve placeholder 'security.jwt.secret' in value \"${security.jwt.secret}\"\n  at com.acme.gateway.security.JwtConfig.jwtDecoder",
+      "expected": "configuration",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.1951
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.7718
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.0051
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.0151
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0072
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.0056
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.2185
+        }
+      ],
+      "predicted": "configuration",
+      "confidence": 0.7718,
+      "route": "config_ticket",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 244.2,
+      "input_tokens": 540
+    },
+    {
+      "id": "inc-051",
+      "source": "handwritten",
+      "scenario": "redis_unreachable",
+      "ambiguous": false,
+      "log_excerpt": "ERROR c.a.cart.CartController: Cart lookup failed\nException: org.springframework.data.redis.RedisConnectionFailureException: Unable to connect to Redis\nCaused by: io.lettuce.core.RedisConnectionException: Unable to connect to redis-cart.internal:6379\nCaused by: io.netty.channel.ConnectTimeoutException: connection timed out after 10000 ms: redis-cart.internal/<IP>",
+      "expected": "dependency",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.0883
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.1574
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.0465
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.6927
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.007
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.008
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.219
+        }
+      ],
+      "predicted": "dependency",
+      "confidence": 0.6927,
+      "route": "dependency_owner_ticket",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 244.8,
+      "input_tokens": 548
+    },
+    {
+      "id": "inc-052",
+      "source": "handwritten",
+      "scenario": "unknown_host",
+      "ambiguous": true,
+      "log_excerpt": "ERROR c.a.order.StockClient: Stock reservation failed for order 99812\nException: org.springframework.web.client.ResourceAccessException: I/O error on POST request for \"http://inventory-svc.prod.internal/api/reservations\": inventory-svc.prod.internal\nCaused by: java.net.UnknownHostException: inventory-svc.prod.internal\n  at com.acme.order.StockClient.reserve",
+      "expected": "dependency",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.0412
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.08
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.0189
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.8435
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0078
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.0086
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.3389
+        }
+      ],
+      "predicted": "dependency",
+      "confidence": 0.8435,
+      "route": "dependency_owner_ticket",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 263.4,
+      "input_tokens": 544
+    },
+    {
+      "id": "inc-053",
+      "source": "handwritten",
+      "scenario": "partner_api_401",
+      "ambiguous": false,
+      "log_excerpt": "ERROR c.a.shipping.CarrierClient: Tracking sync failed\nException: org.springframework.web.client.HttpClientErrorException$Unauthorized: 401 Unauthorized: \"{\"error\":\"invalid_token\",\"error_description\":\"The access token expired\"}\"\n  at com.acme.shipping.CarrierClient.fetchTracking",
+      "expected": "security_certificate",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.1031
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.0526
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.0124
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.308
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.4867
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.0372
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.3043
+        }
+      ],
+      "predicted": "security_certificate",
+      "confidence": 0.4867,
+      "route": "escalate",
+      "escalated": true,
+      "reason": "low_confidence",
+      "suggestions": [
+        [
+          "security_certificate",
+          0.4867
+        ],
+        [
+          "dependency",
+          0.308
+        ]
+      ],
+      "latency_ms": 246.6,
+      "input_tokens": 524
+    },
+    {
+      "id": "inc-054",
+      "source": "handwritten",
+      "scenario": "s3_access_denied",
+      "ambiguous": false,
+      "log_excerpt": "ERROR c.a.docs.S3DocumentRepository: Upload failed for document 55a1\nException: software.amazon.awssdk.services.s3.model.S3Exception: Access Denied (Service: S3, Status Code: 403, Request ID: 7QJ2KX9WB1, Extended Request ID: abc123=)\n  at com.acme.docs.S3DocumentRepository.put",
+      "expected": "security_certificate",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.1887
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.0968
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.0218
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.377
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.2928
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.0228
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.3064
+        }
+      ],
+      "predicted": "dependency",
+      "confidence": 0.377,
+      "route": "escalate",
+      "escalated": true,
+      "reason": "low_confidence",
+      "suggestions": [
+        [
+          "dependency",
+          0.377
+        ],
+        [
+          "security_certificate",
+          0.2928
+        ]
+      ],
+      "latency_ms": 246.0,
+      "input_tokens": 551
+    },
+    {
+      "id": "inc-055",
+      "source": "handwritten",
+      "scenario": "csv_unparseable_date",
+      "ambiguous": false,
+      "log_excerpt": "ERROR c.a.hr.EmployeeCsvImporter: Line 1824 rejected in file employees_2026-09-26.csv\nException: java.time.format.DateTimeParseException: Text '31/02/2026' could not be parsed: Invalid date 'FEBRUARY 31'\n  at com.acme.hr.EmployeeCsvImporter.parseHireDate",
+      "expected": "data_quality",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.2044
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.0249
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.0086
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.0316
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0062
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.7242
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.1461
+        }
+      ],
+      "predicted": "data_quality",
+      "confidence": 0.7242,
+      "route": "data_ticket",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 245.4,
+      "input_tokens": 547
+    },
+    {
+      "id": "inc-056",
+      "source": "handwritten",
+      "scenario": "xml_invoice_malformed",
+      "ambiguous": false,
+      "log_excerpt": "ERROR c.a.billing.SupplierInvoiceReader: Invoice INV-77120 from supplier 4021 rejected\nException: org.xml.sax.SAXParseException: lineNumber: 57; columnNumber: 14; The element type \"Amount\" must be terminated by the matching end-tag \"</Amount>\".\n  at com.acme.billing.SupplierInvoiceReader.read",
+      "expected": "data_quality",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.3042
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.0324
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.0127
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.0834
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.011
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.5562
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.2422
+        }
+      ],
+      "predicted": "data_quality",
+      "confidence": 0.5562,
+      "route": "escalate",
+      "escalated": true,
+      "reason": "low_confidence",
+      "suggestions": [
+        [
+          "data_quality",
+          0.5562
+        ],
+        [
+          "code_defect",
+          0.3042
+        ]
+      ],
+      "latency_ms": 243.1,
+      "input_tokens": 544
+    },
+    {
+      "id": "inc-057",
+      "source": "handwritten",
+      "scenario": "liquibase_checksum",
+      "ambiguous": false,
+      "log_excerpt": "ERROR o.s.boot.SpringApplication: Application run failed\nException: liquibase.exception.ValidationFailedException: Validation Failed\n  1 changesets check sum\n  db/changelog/2026-09-loyalty.yaml::add-tier-column::dev was: 9:8a1f3c changed to: 9:44be0d",
+      "expected": "NONE",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.4419
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.083
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.0222
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.1046
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0125
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.3359
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.3095
+        }
+      ],
+      "predicted": "code_defect",
+      "confidence": 0.4419,
+      "route": "escalate",
+      "escalated": true,
+      "reason": "low_confidence",
+      "suggestions": [
+        [
+          "code_defect",
+          0.4419
+        ],
+        [
+          "data_quality",
+          0.3359
+        ]
+      ],
+      "latency_ms": 245.7,
+      "input_tokens": 539
+    },
+    {
+      "id": "inc-058",
+      "source": "handwritten",
+      "scenario": "no_such_method_after_upgrade",
+      "ambiguous": true,
+      "log_excerpt": "ERROR o.a.c.c.C.[.[.[/].[dispatcherServlet]: Servlet.service() for servlet [dispatcherServlet] threw exception [Handler dispatch failed: java.lang.NoSuchMethodError: 'void io.micrometer.core.instrument.Timer$Builder.publishPercentileHistogram(boolean)'] with root cause\nException: java.lang.NoSuchMethodError: 'void io.micrometer.core.instrument.Timer$Builder.publishPercentileHistogram(boolean)'\n  at com.acme.cart.metrics.CartMetrics.<init>",
+      "expected": "NONE",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.6274
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.1128
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.024
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.2063
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.011
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.0185
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.3374
+        }
+      ],
+      "predicted": "code_defect",
+      "confidence": 0.6274,
+      "route": "fix_agent",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 245.9,
+      "input_tokens": 561
+    },
+    {
+      "id": "inc-059",
+      "source": "handwritten",
+      "scenario": "liveness_probe_restart",
+      "ambiguous": false,
+      "log_excerpt": "Warning  Unhealthy  pod/cart-service-7c9f6d-x2kq8  Liveness probe failed: Get \"http://<IP>/actuator/health/liveness\": context deadline exceeded\n  Normal   Killing    pod/cart-service-7c9f6d-x2kq8  Container cart-service failed liveness probe, will be restarted",
+      "expected": "NONE",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.2186
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.2834
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.0544
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.4099
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0159
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.0178
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.292
+        }
+      ],
+      "predicted": "dependency",
+      "confidence": 0.4099,
+      "route": "escalate",
+      "escalated": true,
+      "reason": "low_confidence",
+      "suggestions": [
+        [
+          "dependency",
+          0.4099
+        ],
+        [
+          "configuration",
+          0.2834
+        ]
+      ],
+      "latency_ms": 251.1,
+      "input_tokens": 541
+    },
+    {
+      "id": "inc-060",
+      "source": "handwritten",
+      "scenario": "fraud_rule_business_event",
+      "ambiguous": false,
+      "log_excerpt": "WARN c.a.payment.FraudRules: Rule R12 (velocity > 5 cards/hour) triggered, order 88123 blocked for manual review",
+      "expected": "NONE",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.2707
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.2126
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.0593
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.3107
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0604
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.0862
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.4393
+        }
+      ],
+      "predicted": "dependency",
+      "confidence": 0.3107,
+      "route": "escalate",
+      "escalated": true,
+      "reason": "low_confidence",
+      "suggestions": [
+        [
+          "dependency",
+          0.3107
+        ],
+        [
+          "code_defect",
+          0.2707
+        ]
+      ],
+      "latency_ms": 241.4,
+      "input_tokens": 499
+    },
+    {
+      "id": "inc-061",
+      "source": "handwritten",
+      "scenario": "shedlock_skip",
+      "ambiguous": false,
+      "log_excerpt": "INFO n.j.s.core.DefaultLockingTaskExecutor: Not executing 'nightlyExport'. It's locked.",
+      "expected": "NONE",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.3633
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.3154
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.1734
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.1019
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0215
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.0245
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.5742
+        }
+      ],
+      "predicted": "NONE",
+      "confidence": 0.3633,
+      "route": "escalate",
+      "escalated": true,
+      "reason": "none",
+      "suggestions": [],
+      "latency_ms": 242.6,
+      "input_tokens": 487
+    },
+    {
+      "id": "inc-062",
+      "source": "handwritten",
+      "scenario": "license_expiring",
+      "ambiguous": false,
+      "log_excerpt": "WARN c.a.docs.pdf.PdfEngineLicense: Commercial license for PDF engine expires in 7 days (<DATE>)",
+      "expected": "NONE",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.131
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.3327
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.0351
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.2614
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.2021
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.0376
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.6356
+        }
+      ],
+      "predicted": "NONE",
+      "confidence": 0.3327,
+      "route": "escalate",
+      "escalated": true,
+      "reason": "none",
+      "suggestions": [],
+      "latency_ms": 422.0,
+      "input_tokens": 488
+    },
+    {
+      "id": "inc-063",
+      "source": "handwritten",
+      "scenario": "kafka_rebalance",
+      "ambiguous": false,
+      "log_excerpt": "INFO o.a.k.c.c.internals.ConsumerCoordinator: [Consumer clientId=billing-1, groupId=billing] Request joining group due to: group is already rebalancing",
+      "expected": "NONE",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.5316
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.1336
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.0753
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.2103
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0199
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.0293
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.6831
+        }
+      ],
+      "predicted": "NONE",
+      "confidence": 0.5316,
+      "route": "escalate",
+      "escalated": true,
+      "reason": "none",
+      "suggestions": [],
+      "latency_ms": 249.7,
+      "input_tokens": 500
+    },
+    {
+      "id": "inc-064",
+      "source": "handwritten",
+      "scenario": "graceful_shutdown",
+      "ambiguous": false,
+      "log_excerpt": "INFO o.s.b.w.e.tomcat.GracefulShutdown: Commencing graceful shutdown. Waiting for active requests to complete",
+      "expected": "NONE",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.2513
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.3061
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.1148
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.2669
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0248
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.0362
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.7862
+        }
+      ],
+      "predicted": "NONE",
+      "confidence": 0.3061,
+      "route": "escalate",
+      "escalated": true,
+      "reason": "none",
+      "suggestions": [],
+      "latency_ms": 243.9,
+      "input_tokens": 489
+    },
+    {
+      "id": "inc-065",
+      "source": "handwritten",
+      "scenario": "customer_email_not_a_log",
+      "ambiguous": false,
+      "log_excerpt": "Bonjour, depuis hier je n'arrive plus à valider mon panier, la page tourne dans le vide. Pouvez-vous m'aider ? Merci, Sophie",
+      "expected": "NONE",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.5675
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.093
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.0346
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.2249
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.0166
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.0633
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.3333
+        }
+      ],
+      "predicted": "code_defect",
+      "confidence": 0.5675,
+      "route": "escalate",
+      "escalated": true,
+      "reason": "low_confidence",
+      "suggestions": [
+        [
+          "code_defect",
+          0.5675
+        ],
+        [
+          "dependency",
+          0.2249
+        ]
+      ],
+      "latency_ms": 242.9,
+      "input_tokens": 497
+    }
+  ]
+}

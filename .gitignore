@@ -1,0 +1,19 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Secrets
+.env
+
+# IDE
+.idea/
+*.iml
+
+# Java
+victim-app/target/
+
+# Runs interrompus, cache local des modèles
+results/*.partial.jsonl
+.hf-cache/

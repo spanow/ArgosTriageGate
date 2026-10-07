@@ -1,0 +1,71 @@
+# Taxonomie du Triage Gate.
+#
+# Principe : une catégorie = QUI doit agir et COMMENT. Deux exceptions différentes corrigées par la même équipe, de la
+# même manière, vont dans la même catégorie.
+#
+# Wazn lit la `definition` (pas l'id) : elle est en anglais, comme les logs et le corpus du modèle, et décrit quand la
+# catégorie s'applique. Les définitions sont écrites à partir de ce principe, SANS regarder le jeu d'évaluation.
+# `label_fr` sert seulement à l'affichage (démo, rapports).
+
+version: 1
+
+# La question posée au modèle : formulée en « qui doit agir », comme le principe ci-dessus.
+instruction: Which team must act to resolve the incident described in this application log?
+
+categories:
+  - id: code_defect
+    label_fr: Défaut du code applicatif
+    route: fix_agent
+    definition: >-
+      A defect in the application's own source code that developers must fix by changing the code: wrong logic,
+      unhandled null or empty value, wrong index or cast, missing input validation, or incorrect handling of
+      concurrent updates. The same request would fail again even with healthy infrastructure and dependencies.
+
+  - id: configuration
+    label_fr: Configuration manquante ou invalide
+    route: config_ticket
+    definition: >-
+      The application is missing a required configuration setting or has an invalid one: an undefined property,
+      environment variable, secret, URL or feature flag. It is fixed by changing deployment configuration, not code.
+
+  - id: capacity
+    label_fr: Capacité ou ressources saturées
+    route: ops_ticket
+    definition: >-
+      A runtime resource of the application reached its limit: connection pool exhausted, thread pool or queue
+      full, heap memory exhausted, disk full, too many open files. Operations must resize, scale or tune the resource.
+
+  - id: dependency
+    label_fr: Service aval en panne ou injoignable
+    route: dependency_owner_ticket
+    definition: >-
+      A downstream service or external partner called over the network did not respond correctly: timeout,
+      connection refused, DNS failure, or a 5xx error returned by the remote system. The owner of that remote
+      service must act, not the team of the calling application.
+
+  - id: security_certificate
+    label_fr: Sécurité, certificat ou authentification
+    route: security_ticket
+    definition: >-
+      A security mechanism blocked the operation: expired, untrusted or invalid TLS certificate, failed TLS
+      handshake, rejected credentials, expired token or denied permission. The security or PKI team must
+      renew certificates or fix credentials.
+
+  - id: data_quality
+    label_fr: Données entrantes invalides
+    route: data_ticket
+    definition: >-
+      Data received from an upstream source or partner is malformed or inconsistent: truncated or invalid JSON,
+      XML or CSV, unexpected format, missing mandatory fields in an imported file or feed. The data producer or
+      the integration team must correct the data.
+
+# Pas de label NONE : Wazn a une porte NONE séparée (`none_probability`, `is_none`).
+# Elle s'applique quand aucune catégorie ne convient (log hors périmètre, inconnu, bruit).
+none:
+  label_fr: Aucune catégorie ne convient
+  route: escalate
+
+# Politique de routage (triage/policy/routing.py). Seuil fixé avant l'évaluation.
+policy:
+  confidence_threshold: 0.6
+  suggestions_top_k: 2

@@ -1,0 +1,55 @@
+# Large-K : routage vers l'équipe propriétaire parmi 36, comme CODEOWNERS à l'échelle d'une
+# entreprise. Catalogue fictif. Définitions en anglais : le modèle les lit.
+# `cases` : incidents du jeu principal (par scénario) et équipe attendue.
+
+instruction: Which team owns the component that must be fixed or acted on to resolve this incident?
+
+teams:
+  checkout-orders: Owns order creation, order validation and the order lifecycle (create, confirm, cancel) in the shop backend.
+  cart: Owns the shopping cart service, cart contents and cart pricing previews.
+  catalog-search: Owns product search, search ranking and the product listing pages.
+  catalog-ingestion: Owns the import of product catalogs and price feeds sent by suppliers and partners.
+  pricing-promotions: Owns prices, discounts, promo codes and promotion campaigns.
+  payments-core: Owns the internal payment domain, payment state and payment reconciliation.
+  psp-integration: Owns the integration with external payment service providers and payment gateways (card authorization, charges, refunds).
+  billing-invoicing: Owns invoices, credit notes and supplier invoice processing.
+  fraud-risk: Owns fraud scoring rules and risk decisions on orders.
+  shipping-delivery: Owns shipping quotes, carrier integrations and their configuration (carrier API keys, endpoints).
+  warehouse-stock: Owns stock levels, stock reservations and warehouse synchronisation.
+  returns-refunds: Owns customer returns and refund workflows.
+  customer-accounts: Owns customer registration, profiles and customer data rules.
+  iam-identity: Owns login, authentication, tokens and user permissions.
+  pki-certificates: Owns TLS certificates, certificate renewal and trust stores for internal and partner connections.
+  notifications: Owns customer emails, SMS, push notifications and their sending queues.
+  loyalty: Owns loyalty points, tiers and member rewards.
+  reporting-analytics: Owns business reports, sales dashboards and data exports.
+  data-platform: Owns the data warehouse, ETL pipelines and analytics storage.
+  database-platform: Owns the shared database servers, their capacity, connection limits and backups.
+  kubernetes-platform: Owns the Kubernetes clusters, pods scheduling, probes and node capacity.
+  network-edge: Owns load balancers, DNS, CDN and the edge proxies.
+  observability: Owns logging, metrics, tracing and alerting infrastructure.
+  ci-release: Owns build pipelines, dependency upgrades, releases and database migrations deployment.
+  messaging-platform: Owns Kafka, RabbitMQ and the shared message brokers.
+  cache-platform: Owns the shared Redis and caching clusters.
+  storage-platform: Owns object storage (S3), file shares and disk volumes.
+  hr-systems: Owns employee data imports and HR integrations.
+  crm: Owns the customer relationship management application and customer contact channels.
+  marketing-campaigns: Owns marketing emails, newsletters and campaign targeting.
+  mobile-app: Owns the iOS and Android shopping apps.
+  web-frontend: Owns the customer website front end and its rendering.
+  customer-support: Owns the support ticketing tool and customer service workflows.
+  security-operations: Owns security monitoring, incident response and vulnerability management.
+  finance-accounting: Owns accounting exports, ledgers and financial closing.
+  partner-api: Owns the public API offered to partners and its developer portal.
+
+cases:
+  - scenario: payment_timeout
+    expected: psp-integration
+  - scenario: tls_cert_expired
+    expected: pki-certificates
+  - scenario: json_parse_error
+    expected: catalog-ingestion
+  - scenario: npe_guest_order
+    expected: checkout-orders
+  - scenario: missing_config
+    expected: shipping-delivery

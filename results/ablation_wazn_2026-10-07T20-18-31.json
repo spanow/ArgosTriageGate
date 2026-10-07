@@ -1,0 +1,65 @@
+{
+  "run_id": "2026-10-07T20-18-31",
+  "rows": [
+    {
+      "id": "inc-018",
+      "scenario": "json_parse_error",
+      "variant": "brut",
+      "expected": "data_quality",
+      "predicted": "data_quality",
+      "confidence": 0.7805,
+      "input_tokens": 2854,
+      "latency_ms": 300.0
+    },
+    {
+      "id": "inc-018",
+      "scenario": "json_parse_error",
+      "variant": "extrait",
+      "expected": "data_quality",
+      "predicted": "data_quality",
+      "confidence": 0.973,
+      "input_tokens": 403,
+      "latency_ms": 165.5
+    },
+    {
+      "id": "inc-024",
+      "scenario": "payment_timeout",
+      "variant": "brut",
+      "expected": "dependency",
+      "predicted": "dependency",
+      "confidence": 0.987,
+      "input_tokens": 3898,
+      "latency_ms": 416.2
+    },
+    {
+      "id": "inc-024",
+      "scenario": "payment_timeout",
+      "variant": "extrait",
+      "expected": "dependency",
+      "predicted": "dependency",
+      "confidence": 0.9746,
+      "input_tokens": 414,
+      "latency_ms": 152.8
+    },
+    {
+      "id": "inc-001",
+      "scenario": "npe_guest_order",
+      "variant": "brut",
+      "expected": "code_defect",
+      "predicted": "code_defect",
+      "confidence": 0.6063,
+      "input_tokens": 2908,
+      "latency_ms": 312.2
+    },
+    {
+      "id": "inc-001",
+      "scenario": "npe_guest_order",
+      "variant": "extrait",
+      "expected": "code_defect",
+      "predicted": "code_defect",
+      "confidence": 0.7399,
+      "input_tokens": 436,
+      "latency_ms": 152.4
+    }
+  ]
+}

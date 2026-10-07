@@ -1,0 +1,1336 @@
+{
+  "run_id": "2026-10-07T20-18-26",
+  "model": "wazn-2b-v0.1",
+  "hardware": "Modal, NVIDIA L4, 23034 MiB, CUDA, torch 2.14.1, bfloat16, flash-linear-attention",
+  "dataset": "robustness",
+  "threshold": 0.6,
+  "instruction": "Which team must act to resolve the incident described in this application log?",
+  "incidents": [
+    {
+      "id": "rob-001",
+      "source": "robustness",
+      "scenario": "py_none_type_error",
+      "ambiguous": false,
+      "log_excerpt": "Traceback (most recent call last):\n  File \"/app/pricing/service.py\", line 88, in compute_total\n  total = base_price + shipping_fee\n  TypeError: unsupported operand type(s) for +: 'NoneType' and 'int'",
+      "expected": "code_defect",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.225698
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.532677
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.005877
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.199368
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.003815
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.032565
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.021852
+        }
+      ],
+      "predicted": "configuration",
+      "confidence": 0.532677,
+      "route": "escalate",
+      "escalated": true,
+      "reason": "low_confidence",
+      "suggestions": [
+        [
+          "configuration",
+          0.532677
+        ],
+        [
+          "code_defect",
+          0.225698
+        ]
+      ],
+      "latency_ms": 150.2,
+      "input_tokens": 370
+    },
+    {
+      "id": "rob-002",
+      "source": "robustness",
+      "scenario": "node_undefined_property",
+      "ambiguous": false,
+      "log_excerpt": "TypeError: Cannot read properties of undefined (reading 'map')\n  at renderCart (/app/src/cart/render.js:42:17)\n  at CartPage (/app/src/cart/page.js:18:10)",
+      "expected": "code_defect",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.113608
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.797476
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.018255
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.043595
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.004752
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.022316
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.00595
+        }
+      ],
+      "predicted": "configuration",
+      "confidence": 0.797476,
+      "route": "config_ticket",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 152.5,
+      "input_tokens": 363
+    },
+    {
+      "id": "rob-003",
+      "source": "robustness",
+      "scenario": "go_index_out_of_range",
+      "ambiguous": false,
+      "log_excerpt": "panic: runtime error: index out of range [3] with length 3\n  goroutine 57 [running]:\n  github.com/acme/routing/internal/planner.(*Planner).nextStop(...)\n  /src/internal/planner/planner.go:131",
+      "expected": "code_defect",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.700961
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.028396
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.068959
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.091844
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.039083
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.070756
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.011288
+        }
+      ],
+      "predicted": "code_defect",
+      "confidence": 0.700961,
+      "route": "fix_agent",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 150.9,
+      "input_tokens": 373
+    },
+    {
+      "id": "rob-004",
+      "source": "robustness",
+      "scenario": "custom_points_exception",
+      "ambiguous": false,
+      "log_excerpt": "ERROR c.a.loyalty.PointsService: Points update failed\nException: com.acme.loyalty.PointsCalculationException: negative balance computed for member 88412 (tier factor is 0)\n  at com.acme.loyalty.PointsService.applyTierFactor",
+      "expected": "code_defect",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.16658
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.679778
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.002859
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.140788
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.00254
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.007455
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.014553
+        }
+      ],
+      "predicted": "configuration",
+      "confidence": 0.679778,
+      "route": "config_ticket",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 155.0,
+      "input_tokens": 373
+    },
+    {
+      "id": "rob-005",
+      "source": "robustness",
+      "scenario": "py_missing_env_key",
+      "ambiguous": false,
+      "log_excerpt": "Traceback (most recent call last):\n  File \"/app/settings.py\", line 12, in <module>\n  DATABASE_URL = os.environ[\"DATABASE_URL\"]\n  KeyError: 'DATABASE_URL'",
+      "expected": "configuration",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.000996
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.984165
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.001169
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.012172
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.000694
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.000804
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.003758
+        }
+      ],
+      "predicted": "configuration",
+      "confidence": 0.984165,
+      "route": "config_ticket",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 150.0,
+      "input_tokens": 359
+    },
+    {
+      "id": "rob-006",
+      "source": "robustness",
+      "scenario": "node_missing_env",
+      "ambiguous": false,
+      "log_excerpt": "Error: Missing required environment variable STRIPE_WEBHOOK_SECRET\n  at loadConfig (/app/src/config.js:23:11)",
+      "expected": "configuration",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.006721
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.95601
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.003668
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.025793
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.005074
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.002734
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.008748
+        }
+      ],
+      "predicted": "configuration",
+      "confidence": 0.95601,
+      "route": "config_ticket",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 149.8,
+      "input_tokens": 344
+    },
+    {
+      "id": "rob-007",
+      "source": "robustness",
+      "scenario": "french_missing_parameter",
+      "ambiguous": false,
+      "log_excerpt": "ERROR c.a.export.ExportConfig: Paramètre 'export.s3.bucket' absent de la configuration, export désactivé",
+      "expected": "configuration",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.003014
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.972598
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.001897
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.019111
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.001223
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.002156
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.006451
+        }
+      ],
+      "predicted": "configuration",
+      "confidence": 0.972598,
+      "route": "config_ticket",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 150.5,
+      "input_tokens": 339
+    },
+    {
+      "id": "rob-008",
+      "source": "robustness",
+      "scenario": "celery_worker_oom_killed",
+      "ambiguous": false,
+      "log_excerpt": "[<DATE> 02:14:09,551: ERROR/MainProcess] Process 'ForkPoolWorker-3' pid:4121 exited with 'signal 9 (SIGKILL)'\nException: billiard.exceptions.WorkerLostError: Worker exited prematurely: signal 9 (SIGKILL) Job: 1882.\n  [<DATE> 02:14:09,602: WARNING/MainProcess] Memory usage 3.9 GiB exceeded container limit 4 GiB",
+      "expected": "capacity",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.024734
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.115658
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.73888
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.075403
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.022474
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.022851
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.058662
+        }
+      ],
+      "predicted": "capacity",
+      "confidence": 0.73888,
+      "route": "ops_ticket",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 152.1,
+      "input_tokens": 432
+    },
+    {
+      "id": "rob-009",
+      "source": "robustness",
+      "scenario": "go_pg_too_many_clients",
+      "ambiguous": false,
+      "log_excerpt": "2026/10/03 11:02:44 ERROR store: begin tx: pq: sorry, too many clients already",
+      "expected": "capacity",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.03944
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.041058
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.759822
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.08441
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.070176
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.005093
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.012676
+        }
+      ],
+      "predicted": "capacity",
+      "confidence": 0.759822,
+      "route": "ops_ticket",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 151.5,
+      "input_tokens": 348
+    },
+    {
+      "id": "rob-010",
+      "source": "robustness",
+      "scenario": "node_heap_out_of_memory",
+      "ambiguous": false,
+      "log_excerpt": "<--- Last few GCs --->\n  [1:0x5f3c2e0]   <NUM> ms: Mark-Compact 2041.2 (2083.4) -> 2039.8 (2083.6) MB, 1520.3 / 0.0 ms\n  FATAL ERROR: Reached heap limit Allocation failed - JavaScript heap out of memory",
+      "expected": "capacity",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.057903
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.107564
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.618815
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.093867
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.03732
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.084531
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.042111
+        }
+      ],
+      "predicted": "capacity",
+      "confidence": 0.618815,
+      "route": "ops_ticket",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 154.9,
+      "input_tokens": 409
+    },
+    {
+      "id": "rob-011",
+      "source": "robustness",
+      "scenario": "py_requests_read_timeout",
+      "ambiguous": false,
+      "log_excerpt": "requests.exceptions.ReadTimeout: HTTPSConnectionPool(host='api.carrier.example', port=443): Read timed out. (read timeout=5)",
+      "expected": "dependency",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.001048
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.090143
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.024138
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.834254
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.04498
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.005438
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.010892
+        }
+      ],
+      "predicted": "dependency",
+      "confidence": 0.834254,
+      "route": "dependency_owner_ticket",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 150.2,
+      "input_tokens": 346
+    },
+    {
+      "id": "rob-012",
+      "source": "robustness",
+      "scenario": "node_econnrefused_rabbitmq",
+      "ambiguous": false,
+      "log_excerpt": "Error: connect ECONNREFUSED <IP>\n  at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1595:16)",
+      "expected": "dependency",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.007113
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.087377
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.039335
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.763308
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.093186
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.00968
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.012742
+        }
+      ],
+      "predicted": "dependency",
+      "confidence": 0.763308,
+      "route": "dependency_owner_ticket",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 151.8,
+      "input_tokens": 351
+    },
+    {
+      "id": "rob-013",
+      "source": "robustness",
+      "scenario": "nginx_upstream_timeout",
+      "ambiguous": false,
+      "log_excerpt": "2026/10/03 14:22:10 [error] 31#31: *88213 upstream timed out (110: Connection timed out) while reading response header from upstream, client: <IP>, server: shop.example, request: \"GET /api/orders HTTP/1.1\", upstream: \"http://<IP>/api/orders\"",
+      "expected": "dependency",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.004833
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.131934
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.010457
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.833371
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.005967
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.013438
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.010577
+        }
+      ],
+      "predicted": "dependency",
+      "confidence": 0.833371,
+      "route": "dependency_owner_ticket",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 152.8,
+      "input_tokens": 403
+    },
+    {
+      "id": "rob-014",
+      "source": "robustness",
+      "scenario": "custom_provider_down_fr",
+      "ambiguous": false,
+      "log_excerpt": "ERROR c.a.payment.CheckoutService: Paiement impossible\nException: com.acme.payment.PaymentProviderDownException: Le prestataire Paylib ne répond plus (3 tentatives en échec)\n  at com.acme.payment.PaylibGateway.authorize",
+      "expected": "dependency",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.001048
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.025196
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.003504
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.966481
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.002883
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.000889
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.00851
+        }
+      ],
+      "predicted": "dependency",
+      "confidence": 0.966481,
+      "route": "dependency_owner_ticket",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 152.5,
+      "input_tokens": 366
+    },
+    {
+      "id": "rob-015",
+      "source": "robustness",
+      "scenario": "py_ssl_cert_expired",
+      "ambiguous": false,
+      "log_excerpt": "ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1006)",
+      "expected": "security_certificate",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.000351
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.001896
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.000462
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.00324
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.993582
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.00047
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.005173
+        }
+      ],
+      "predicted": "security_certificate",
+      "confidence": 0.993582,
+      "route": "security_ticket",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 156.8,
+      "input_tokens": 346
+    },
+    {
+      "id": "rob-016",
+      "source": "robustness",
+      "scenario": "go_x509_unknown_authority",
+      "ambiguous": false,
+      "log_excerpt": "2026/10/04 08:11:03 ERROR sync partner: Get \"https://partner.example/api/v1/stock\": tls: failed to verify certificate: x509: certificate signed by unknown authority",
+      "expected": "security_certificate",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.000739
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.140077
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.001069
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.040962
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.81335
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.003803
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.008234
+        }
+      ],
+      "predicted": "security_certificate",
+      "confidence": 0.81335,
+      "route": "security_ticket",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 153.0,
+      "input_tokens": 367
+    },
+    {
+      "id": "rob-017",
+      "source": "robustness",
+      "scenario": "node_jwt_expired",
+      "ambiguous": false,
+      "log_excerpt": "JsonWebTokenError: jwt expired\n  at /app/node_modules/jsonwebtoken/verify.js:190:21\n  at authenticate (/app/src/auth/middleware.js:15:9)",
+      "expected": "security_certificate",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.042229
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.455833
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.034971
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.163528
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.293741
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.009697
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.048135
+        }
+      ],
+      "predicted": "configuration",
+      "confidence": 0.455833,
+      "route": "escalate",
+      "escalated": true,
+      "reason": "low_confidence",
+      "suggestions": [
+        [
+          "configuration",
+          0.455833
+        ],
+        [
+          "security_certificate",
+          0.293741
+        ]
+      ],
+      "latency_ms": 151.4,
+      "input_tokens": 358
+    },
+    {
+      "id": "rob-018",
+      "source": "robustness",
+      "scenario": "py_json_decode_feed",
+      "ambiguous": false,
+      "log_excerpt": "<DATE> 03:00:12,881 ERROR feeds.importer Supplier feed 'globex-daily' rejected\nException: json.decoder.JSONDecodeError: Expecting ',' delimiter: line 1 column 384 (char 383)",
+      "expected": "data_quality",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.002838
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.025858
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.00136
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.006124
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.002233
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.961587
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.004791
+        }
+      ],
+      "predicted": "data_quality",
+      "confidence": 0.961587,
+      "route": "data_ticket",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 148.7,
+      "input_tokens": 373
+    },
+    {
+      "id": "rob-019",
+      "source": "robustness",
+      "scenario": "py_csv_float_conversion",
+      "ambiguous": false,
+      "log_excerpt": "Traceback (most recent call last):\n  File \"/app/jobs/import_prices.py\", line 51, in parse_row\n  price = float(row[\"unit_price\"])\n  ValueError: could not convert string to float: 'N/A'",
+      "expected": "data_quality",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.018642
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.020245
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.000716
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.010993
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.000481
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.948923
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.004825
+        }
+      ],
+      "predicted": "data_quality",
+      "confidence": 0.948923,
+      "route": "data_ticket",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 149.5,
+      "input_tokens": 367
+    },
+    {
+      "id": "rob-020",
+      "source": "robustness",
+      "scenario": "go_csv_wrong_fields",
+      "ambiguous": false,
+      "log_excerpt": "2026/10/04 04:30:00 ERROR import partner file stock_2026-10-03.csv: record on line 418: wrong number of fields",
+      "expected": "data_quality",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.002141
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.008694
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.001291
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.012026
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.000717
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.97513
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.003802
+        }
+      ],
+      "predicted": "data_quality",
+      "confidence": 0.97513,
+      "route": "data_ticket",
+      "escalated": false,
+      "reason": "confident",
+      "suggestions": [],
+      "latency_ms": 150.7,
+      "input_tokens": 364
+    },
+    {
+      "id": "rob-021",
+      "source": "robustness",
+      "scenario": "uvicorn_started",
+      "ambiguous": false,
+      "log_excerpt": "INFO:     Uvicorn running on http://<IP> (Press CTRL+C to quit)",
+      "expected": "NONE",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.024711
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.383901
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.154854
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.233085
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.091145
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.112303
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.018713
+        }
+      ],
+      "predicted": "configuration",
+      "confidence": 0.383901,
+      "route": "escalate",
+      "escalated": true,
+      "reason": "low_confidence",
+      "suggestions": [
+        [
+          "configuration",
+          0.383901
+        ],
+        [
+          "dependency",
+          0.233085
+        ]
+      ],
+      "latency_ms": 150.3,
+      "input_tokens": 335
+    },
+    {
+      "id": "rob-022",
+      "source": "robustness",
+      "scenario": "daily_digest_sent",
+      "ambiguous": false,
+      "log_excerpt": "INFO c.a.mailer.DigestJob: Daily sales digest sent to 42 recipients",
+      "expected": "NONE",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.038348
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.459873
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.052367
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.36559
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.03273
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.051092
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.076533
+        }
+      ],
+      "predicted": "configuration",
+      "confidence": 0.459873,
+      "route": "escalate",
+      "escalated": true,
+      "reason": "low_confidence",
+      "suggestions": [
+        [
+          "configuration",
+          0.459873
+        ],
+        [
+          "dependency",
+          0.36559
+        ]
+      ],
+      "latency_ms": 151.9,
+      "input_tokens": 333
+    },
+    {
+      "id": "rob-023",
+      "source": "robustness",
+      "scenario": "npm_deprecated_warning",
+      "ambiguous": false,
+      "log_excerpt": "npm WARN deprecated <EMAIL>: request has been deprecated, see https://github.com/request/request/issues/3142",
+      "expected": "NONE",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.029207
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.115577
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.150494
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.451632
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.163956
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.089134
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.043927
+        }
+      ],
+      "predicted": "dependency",
+      "confidence": 0.451632,
+      "route": "escalate",
+      "escalated": true,
+      "reason": "low_confidence",
+      "suggestions": [
+        [
+          "dependency",
+          0.451632
+        ],
+        [
+          "security_certificate",
+          0.163956
+        ]
+      ],
+      "latency_ms": 152.6,
+      "input_tokens": 339
+    },
+    {
+      "id": "rob-024",
+      "source": "robustness",
+      "scenario": "audit_new_device_login",
+      "ambiguous": false,
+      "log_excerpt": "INFO c.a.crm.audit.LoginAudit: User u-2231 logged in from a new device (Firefox, Windows)",
+      "expected": "NONE",
+      "candidates": [
+        {
+          "id": "code_defect",
+          "description": "Défaut du code applicatif",
+          "probability": 0.051696
+        },
+        {
+          "id": "configuration",
+          "description": "Configuration manquante ou invalide",
+          "probability": 0.31882
+        },
+        {
+          "id": "capacity",
+          "description": "Capacité ou ressources saturées",
+          "probability": 0.065955
+        },
+        {
+          "id": "dependency",
+          "description": "Service aval en panne ou injoignable",
+          "probability": 0.296573
+        },
+        {
+          "id": "security_certificate",
+          "description": "Sécurité, certificat ou authentification",
+          "probability": 0.223813
+        },
+        {
+          "id": "data_quality",
+          "description": "Données entrantes invalides",
+          "probability": 0.043143
+        },
+        {
+          "id": "NONE",
+          "description": "Aucune catégorie ne correspond",
+          "probability": 0.387113
+        }
+      ],
+      "predicted": "configuration",
+      "confidence": 0.31882,
+      "route": "escalate",
+      "escalated": true,
+      "reason": "low_confidence",
+      "suggestions": [
+        [
+          "configuration",
+          0.31882
+        ],
+        [
+          "dependency",
+          0.296573
+        ]
+      ],
+      "latency_ms": 296.7,
+      "input_tokens": 342
+    }
+  ]
+}
